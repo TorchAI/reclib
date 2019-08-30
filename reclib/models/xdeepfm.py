@@ -1,12 +1,12 @@
 import torch
 import type
-from modules.layer import CompressedInteractionNetwork, FeaturesEmbedding, FeaturesLinear, MultiLayerPerceptron
+from modules.layers import CompressedInteractionNetwork, FeaturesEmbedding, FeaturesLinear, MultiLayerPerceptron
 
 
 class ExtremeDeepFactorizationMachineModel(torch.nn.Module):
     """
     A pytorch implementation of xDeepFM.
-    
+
     Reference:
         J Lian, et al. xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems, 2018.
 
