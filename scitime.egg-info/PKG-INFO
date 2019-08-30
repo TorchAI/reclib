@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: scitime
+Version: 0.0.2
+Summary: Training time estimator for scikit-learn algorithms
+Home-page: http://github.com/nathan-toubiana/scitime
+Author: Gabriel Lerner & Nathan Toubiana
+Author-email: toubiana.nathan@gmail.com
+License: UNKNOWN
+Description: # reclib
+        ---
+        
+        A python package that provides many recommendation algorithms and let users train and test on their own datasets.
+        
+        ## Setup
+        
+        `pip install reclib`
+        
+        ## Features
+        
+        - Pythonic
+        - Easy to use
+        - State-of-the-art
+        
+        
+        ## Models
+        
+        Please refer to the documents
+        
+        |       |       |       |       |       |
+        |---    |---    |---    |---    |---    |
+        |       |       |       |       |       |
+        |       |       |       |       |       |
+        |       |       |       |       |       |
+        
+        
+        ## Contributions
+        Contributions are welcome
+        
+        
+        ## Licence
+        
+         
+        
+Keywords: machine-learning,scikit-learn,training-time
+Platform: UNKNOWN
+Requires-Python: >=3
+Description-Content-Type: text/markdown

@@ -1,0 +1,47 @@
+Metadata-Version: 2.1
+Name: reclib
+Version: 0.1
+Summary: A Python Library for Recommender System
+Home-page: https://github.com/tingkai-zhang/reclib
+Author: Tingkai Zhang
+Author-email: tingkai.zhang@gmail.com
+License: UNKNOWN
+Description: # reclib
+        ---
+        
+        A python package that provides many recommendation algorithms and let users train and test on their own datasets.
+        
+        ## Setup
+        
+        `pip install reclib`
+        
+        ## Features
+        
+        - Pythonic
+        - Easy to use
+        - State-of-the-art
+        
+        
+        ## Models
+        
+        Please refer to the documents
+        
+        |       |       |       |       |       |
+        |---    |---    |---    |---    |---    |
+        |       |       |       |       |       |
+        |       |       |       |       |       |
+        |       |       |       |       |       |
+        
+        
+        ## Contributions
+        Contributions are welcome
+        
+        
+        ## Licence
+        
+         
+        
+Keywords: recommender-system,machine-learning,deep-learning
+Platform: UNKNOWN
+Requires-Python: >=3
+Description-Content-Type: text/markdown
