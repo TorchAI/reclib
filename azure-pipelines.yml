@@ -26,5 +26,5 @@ steps:
 
 - script: |
     pip install pytest pytest-azurepipelines
-    pytest reclib/
+    pytest reclib/models/xdeepfm.py
   displayName: 'pytest'
