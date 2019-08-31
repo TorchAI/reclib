@@ -31,14 +31,11 @@ state of the art models with high quality engineering.
    api/reclib.commands
    api/reclib.common
    api/reclib.data
-   api/reclib.interpret
    api/reclib.models
    api/reclib.predictors
    api/reclib.modules
    api/reclib.nn
-   api/reclib.semparse
    api/reclib.service
-   api/reclib.state_machines
    api/reclib.tools
    api/reclib.training
    api/reclib.pretrained

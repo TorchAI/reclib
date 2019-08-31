@@ -48,6 +48,10 @@ extensions = ['sphinx.ext.autodoc',
               'numpydoc'
 ]
 
+napoleon_google_docstring = False
+napoleon_use_param = False
+napoleon_use_ivar = True
+
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
@@ -118,7 +122,7 @@ html_sidebars = {
 # -- Options for HTMLHelp output ------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'allennlp_doc'
+htmlhelp_basename = 'reclib_doc'
 
 
 # -- Options for LaTeX output ---------------------------------------------
