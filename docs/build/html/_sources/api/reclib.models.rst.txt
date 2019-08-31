@@ -8,6 +8,5 @@ reclib.models
 
 .. toctree::
 
-  reclib.models.model
   reclib.models.xdeepfm
 

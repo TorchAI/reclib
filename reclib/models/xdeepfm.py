@@ -1,6 +1,6 @@
 import torch
 import type
-from modules.layers import CompressedInteractionNetwork, FeaturesEmbedding, FeaturesLinear, MultiLayerPerceptron
+from reclib.modules.layers import CompressedInteractionNetwork, FeaturesEmbedding, FeaturesLinear, MultiLayerPerceptron
 
 
 class ExtremeDeepFactorizationMachineModel(torch.nn.Module):
