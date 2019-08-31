@@ -22,4 +22,4 @@ python
   system_packages
     - true
   install
-    - requirements: requirements.txt
+    - requirements: docs/doc_requirements.txt
