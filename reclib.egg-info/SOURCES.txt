@@ -1,7 +1,0 @@
-README.md
-setup.py
-reclib.egg-info/PKG-INFO
-reclib.egg-info/SOURCES.txt
-reclib.egg-info/dependency_links.txt
-reclib.egg-info/requires.txt
-reclib.egg-info/top_level.txt
