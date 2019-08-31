@@ -1,22 +1,11 @@
 reclib.models package
 =====================
 
-Submodules
-----------
 
-reclib.models.xdeepfm module
+reclib.models.xdeepfm
 ----------------------------
 
 .. automodule:: reclib.models.xdeepfm
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: reclib.models
    :members:
    :undoc-members:
    :show-inheritance:
