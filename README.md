@@ -8,7 +8,7 @@ A python library that provides many recommendation algorithms and let users trai
 
 ## Installation
 
-reclib requires Python 3.6.1 or later. The preferred way to install reclib is via `pip`.  Just run `pip install reclib` in your Python environment and you're good to go!
+reclib requires Python 3.7.1 or later. The preferred way to install reclib is via `pip`.  Just run `pip install reclib` in your Python environment and you're good to go!
 
 If you need pointers on setting up an appropriate Python environment or would like to install reclib using a different method, see below.
 
@@ -19,15 +19,15 @@ Windows is currently not officially supported, although we try to fix issues whe
 #### Setting up a virtual environment
 
 [Conda](https://conda.io/) can be used set up a virtual environment with the
-version of Python required for reclib.  If you already have a Python 3.6 or 3.7
+version of Python required for reclib.  If you already have a Python 3.7 or 3.7
 environment you want to use, you can skip to the 'installing via pip' section.
 
 1.  [Download and install Conda](https://conda.io/projects/conda/en/latest/user-guide/install/index.html).
 
-2.  Create a Conda environment with Python 3.6
+2.  Create a Conda environment with Python 3.7
 
     ```bash
-    conda create -n reclib python=3.6
+    conda create -n reclib python=3.7
     ```
 
 3.  Activate the Conda environment. You will need to activate the Conda environment in each terminal in which you want to use reclib.
