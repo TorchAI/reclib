@@ -2,3 +2,6 @@
 *.zip
 *.xml
 *.iml
+
+dist/
+reclib.egg-info
