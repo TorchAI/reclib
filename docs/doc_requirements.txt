@@ -1,2 +1,8 @@
+sphinx
+sphinx-autobuild
 
-numpydoc >= 0.9.1
+# if using typehints
+sphinx-autodoc-typehints
+
+mock
+autodoc

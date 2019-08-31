@@ -15,8 +15,9 @@ import sys
 import sphinx
 import sphinx_rtd_theme
 #sys.path.insert(0, os.path.abspath('../../'))
-sys.path.insert(0, os.path.abspath('D:\\ML-Project\\xDeepFM-Pytorch'))
-
+#sys.path.insert(0, os.path.abspath('D:\\ML-Project\\xDeepFM-Pytorch'))
+file_loc = os.path.split(__file__)[0]
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(file_loc), '.')))
 
 
 print()
@@ -57,7 +58,7 @@ templates_path = ['_templates']
 source_suffix = '.rst'
 
 # The master toctree document.
-master_doc = 'index'
+master_doc = 'index'    
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
