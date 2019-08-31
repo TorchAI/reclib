@@ -25,7 +25,7 @@ RecLib is built and maintained by the Tingkai Zhang. With a dedicated team of be
 state of the art models with high quality engineering.
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    :caption: Package Reference
 
    api/reclib.commands
