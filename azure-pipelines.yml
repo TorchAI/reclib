@@ -26,5 +26,4 @@ steps:
 
 - script: |
     pip install pytest pytest-azurepipelines
-    python -m pytest reclib
   displayName: 'pytest'
