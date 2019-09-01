@@ -66,9 +66,9 @@ Please refer to the documents
 
 
 
-| Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Explained Variance | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| xDeepFM |   |   |   |   |  |    |   |   | 
+| Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Acc | Explained Variance | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |--- | 
+| xDeepFM |   |   |   |   |  |    |   |   |   | 
 
 
 ## Issues
