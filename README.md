@@ -1,4 +1,4 @@
-# reclib
+<p align="center"><img width="40%" src="docs/RecLib.png" /></p>
 
 [![Build Status](https://dev.azure.com/tingkaizhang/reclib/_apis/build/status/tingkai-zhang.reclib?branchName=master)](https://dev.azure.com/tingkaizhang/reclib/_build/latest?definitionId=1&branchName=master)
 

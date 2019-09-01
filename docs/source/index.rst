@@ -14,14 +14,14 @@ following principles:
 * *Hyper-modular and lightweight.* Use the parts which you like seamlessly with PyTorch.
 * *Extensively tested and easy to extend.* Test coverage is above 90% and the example
   models provide a template for contributions.
-* *Take padding and masking seriously*, making it easy to implement correct
+* *Take object oriented design*, making it easy to implement correct
   models without the pain.
 * *Experiment friendly.*  Run reproducible experiments from a json
   specification with comprehensive logging.
 
-RecLib includes reference implementations of high quality models for CTR, ad ranking and more (see https://RecLib.org/models).
+RecLib includes reference implementations of high quality models for CTR, ad ranking and more (see https://github.com/tingkai-zhang/reclib#models).
 
-RecLib is built and maintained by the Tingkai Zhang. With a dedicated team of best-in-field researchers and software engineers, the RecLib project is uniquely positioned to provide
+RecLib is built and maintained by the Tingkai Zhang. The RecLib project is uniquely positioned to provide
 state of the art models with high quality engineering.
 
 .. toctree::
