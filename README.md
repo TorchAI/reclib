@@ -2,7 +2,6 @@
 
 
 [![Build Status](https://dev.azure.com/tingkaizhang/reclib/_apis/build/status/tingkai-zhang.reclib?branchName=master)](https://dev.azure.com/tingkaizhang/reclib/_build/latest?definitionId=1&branchName=master)
-
 <a style="margin: 0 5px" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/tingkai-zhang/reclib" alt="GitHub license"></a>
 
 
