@@ -3,9 +3,25 @@
 
 [![Build Status](https://dev.azure.com/tingkaizhang/reclib/_apis/build/status/tingkai-zhang.reclib?branchName=master)](https://dev.azure.com/tingkaizhang/reclib/_build/latest?definitionId=1&branchName=master)
 
+<a style="margin: 0 5px" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/tingkai-zhang/reclib" alt="GitHub license"></a>
+
+
 
 
 A python library that provides many recommendation algorithms and let users train and test on their own datasets.
+
+
+## Package Overview
+| **reclib** | an open-source NLP research library, built on PyTorch |
+| --- | --- |
+| **reclib.commands** | functionality for a CLI and web service |
+| **reclib.data** | a data processing module for loading datasets and encoding strings as integers for representation in matrices |
+| **reclib.models** | a collection of state-of-the-art models |
+| **reclib.modules** | a collection of PyTorch modules for use with text |
+| **reclib.nn** | tensor utility functions, such as initializers and activation functions |
+| **reclib.service** | a web server to that can serve demos for your models |
+| **reclib.training** | functionality for training models |
+
 
 ## Installation
 
@@ -68,7 +84,7 @@ Please refer to the documents
 
 | Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Acc | Explained Variance | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- | 
-| xDeepFM |   |   |   |   |  |    |   |   |   | 
+| xDeepFM |   |   |   |   |  |    |   |  0.792 |   | 
 
 
 ## Issues
