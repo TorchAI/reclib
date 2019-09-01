@@ -1,0 +1,11 @@
+numpydoc
+sphinx
+sphinx-autobuild
+sphinx_rtd_theme
+recommonmark
+
+mock
+autodoc
+
+# if using typehints
+sphinx-autodoc-typehints

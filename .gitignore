@@ -1,0 +1,9 @@
+
+*.zip
+*.xml
+*.iml
+
+dist/
+reclib.egg-info
+tmp/
+__pycache__
