@@ -1,5 +1,4 @@
-<p align="center"><img width="20%" src="docs/RecLib.png" /></p>
-
+<p align="center"><img width="17%" src="docs/RecLib.png" /></p>
 [![Build Status](https://dev.azure.com/tingkaizhang/reclib/_apis/build/status/tingkai-zhang.reclib?branchName=master)](https://dev.azure.com/tingkaizhang/reclib/_build/latest?definitionId=1&branchName=master)
 
 ---
@@ -79,4 +78,4 @@ Pull requests (PRs) must have one approving review and no requested changes befo
 
 ## Licence
 Apache 2.0 
- 
+
