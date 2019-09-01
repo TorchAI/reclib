@@ -3,7 +3,7 @@
 
 [![Build Status](https://dev.azure.com/tingkaizhang/reclib/_apis/build/status/tingkai-zhang.reclib?branchName=master)](https://dev.azure.com/tingkaizhang/reclib/_build/latest?definitionId=1&branchName=master)
 
----
+
 
 A python library that provides many recommendation algorithms and let users train and test on their own datasets.
 
@@ -64,11 +64,12 @@ please visit https://pytorch.org/ and install the relevant pytorch binary._
 
 Please refer to the documents
 
-|       |       |       |       |       |
-|---    |---    |---    |---    |---    |
-|       |       |       |       |       |
-|       |       |       |       |       |
-|       |       |       |       |       |
+
+
+| Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Explained Variance | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| xDeepFM |   |   |   |   |  |    |   |   | 
+
 
 ## Issues
 Everyone is welcome to file issues with either feature requests, bug reports, or general questions. As a small team with only one person, we may ask for contributions if a prompt fix doesn't fit into our roadmap. We allow users a two week window to follow up on questions, after which we will close issues. They can be re-opened if there is further discussion.
