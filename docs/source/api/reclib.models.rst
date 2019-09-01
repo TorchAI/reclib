@@ -4,14 +4,9 @@ reclib.models package
 Submodules
 ----------
 
-reclib.models.xdeepfm module
-----------------------------
+.. toctree::
 
-.. automodule:: reclib.models.xdeepfm
-   :members:
-   :undoc-members:
-   :show-inheritance:
-
+   reclib.models.xdeepfm
 
 Module contents
 ---------------
