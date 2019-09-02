@@ -16,10 +16,16 @@ class AvazuDataset(torch.utils.data.Dataset):
     Dataset preparation
         Remove the infrequent features (appearing in less than threshold instances) and treat them as a single feature
 
-    :param dataset_path: avazu train path
-    :param cache_path: lmdb cache path
-    :param rebuild_cache: If True, lmdb cache is refreshed
-    :param min_threshold: infrequent feature threshold
+    Parameters
+    ----------
+    dataset_path: ``string``
+        criteo train.txt path.
+    cache_path: ``string``
+        lmdb cache path.
+    rebuild_cache: ``bool``
+        If True, lmdb cache is refreshed.
+    min_threshold: 
+        infrequent feature threshold.
 
     Reference
         https://www.kaggle.com/c/avazu-ctr-prediction

@@ -81,9 +81,9 @@ Please refer to the documents
 
 ### MovieLens 1M
 
-| Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Acc | Explained Variance | 
+| Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Auc | Explained Variance | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- | 
-| XDeepFM |   |   |   |   |  |    |   |  0.79296 |   | 
+| XDeepFM |   |   |   |   |  |    |   | 0.800158 |   | 
 | AutomaticFeatureInteraction |   |   |   |   |  |    |   |  0.7928 |   | 
 
 

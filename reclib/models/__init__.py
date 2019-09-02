@@ -6,7 +6,6 @@ from reclib.models.dcn import DeepCrossNetwork
 from reclib.models.dfm import DeepFactorizationMachine
 from reclib.models.ffm import FieldAwareFactorizationMachine
 from reclib.models.fm import FactorizationMachine
-
 from reclib.models.fnfm import FieldAwareNeuralFactorizationMachine
 from reclib.models.fnn import FactorizationSupportedNeuralNetwork
 from reclib.models.nfm import NeuralFactorizationMachine

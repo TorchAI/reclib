@@ -19,10 +19,16 @@ class CriteoDataset(torch.utils.data.Dataset):
         * Remove the infrequent features (appearing in less than threshold instances) and treat them as a single feature
         * Discretize numerical values by log2 transformation which is proposed by the winner of Criteo Competition
 
-    :param dataset_path: criteo train.txt path.
-    :param cache_path: lmdb cache path.
-    :param rebuild_cache: If True, lmdb cache is refreshed.
-    :param min_threshold: infrequent feature threshold.
+    Parameters
+    ----------
+    dataset_path: ``string``
+        criteo train.txt path.
+    cache_path: ``string``
+        lmdb cache path.
+    rebuild_cache: ``bool``
+        If True, lmdb cache is refreshed.
+    min_threshold: 
+        infrequent feature threshold.
 
     Reference:
         https://labs.criteo.com/2014/02/kaggle-display-advertising-challenge-dataset

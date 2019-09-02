@@ -10,14 +10,27 @@ class MovieLens20MDataset(torch.utils.data.Dataset):
     Data preparation
         treat samples with a rating less than 3 as negative samples
 
-    :param dataset_path: MovieLens dataset path
+    Parameters
+    ----------
+    dataset_path: ``string``
+        MovieLens dataset path
+
+    Attributes
+    ----------
+    items : ``array``
+        MovieLens raw feature columns(fields), discrete values
+    targets:  ``array``
+        processed binary targets. 0, 1
+    field_dims: ``List``
+        The max numbers of each column, defining the size of each field
 
     Reference:
         https://grouplens.org/datasets/movielens
     """
 
     def __init__(self, dataset_path, sep=','):
-        data = pd.read_csv(dataset_path, sep=sep, engine='python').to_numpy()[:, :3]
+        data = pd.read_csv(dataset_path, sep=sep,
+                           engine='python').to_numpy()[:, :3]
         self.items = data[:, :2].astype(np.int)
         self.targets = self.__preprocess_target(data[:, 2]).astype(np.float32)
         self.field_dims = np.max(self.items, axis=0)

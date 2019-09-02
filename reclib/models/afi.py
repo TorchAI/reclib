@@ -9,6 +9,8 @@ class AutomaticFeatureInteraction(torch.nn.Module):
     A pytorch implementation of AutoInt.
     Parameters
     ----------
+    
+    
     Reference:
         W Song, et al. AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks, 2018.
     """
