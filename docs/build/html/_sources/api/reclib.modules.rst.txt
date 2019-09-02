@@ -1,8 +1,23 @@
 reclib.modules package
 ======================
 
+Subpackages
+-----------
+
+.. toctree::
+
+   reclib.modules.embedders
+
 Submodules
 ----------
+
+reclib.modules.feedforward module
+---------------------------------
+
+.. automodule:: reclib.modules.feedforward
+   :members:
+   :undoc-members:
+   :show-inheritance:
 
 reclib.modules.layers module
 ----------------------------

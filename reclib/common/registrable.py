@@ -1,5 +1,5 @@
 """
-:class:`~allennlp.common.registrable.Registrable` is a "mixin" for endowing
+:class:`~reclib.common.registrable.Registrable` is a "mixin" for endowing
 any base class with a named registry for its subclasses and a decorator
 for registering them.
 """
@@ -7,8 +7,8 @@ import logging
 from collections import defaultdict
 from typing import TypeVar, Type, Dict, List
 
-from allennlp.common.checks import ConfigurationError
-from allennlp.common.from_params import FromParams
+from reclib.common.checks import ConfigurationError
+from reclib.common.from_params import FromParams
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 

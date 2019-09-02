@@ -6,9 +6,11 @@ Subpackages
 
 .. toctree::
 
+   reclib.common
    reclib.data
    reclib.models
    reclib.modules
+   reclib.nn
 
 Module contents
 ---------------
