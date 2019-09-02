@@ -174,7 +174,7 @@ class CrossNetwork(torch.nn.Module):
         return x
 
 
-class AttentionalFactorizationMachine(torch.nn.Module):
+class AttentionalFactorizationLayer(torch.nn.Module):
 
     def __init__(self, embed_dim, attn_size, dropouts):
         super().__init__()

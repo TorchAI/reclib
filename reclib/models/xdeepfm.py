@@ -9,8 +9,8 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
 
     Parameters
     ----------
-    field_dims: ``int``
-        The dimensions of each field
+    field_dims: ``List``
+        List of sizes of each field
     embed_dim: ``int``
         The embedding dimension
     mlp_dim: ``int``

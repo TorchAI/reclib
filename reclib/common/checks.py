@@ -1,6 +1,6 @@
 """
 Functions and exceptions for checking that
-RevLib and its models are configured correctly.
+RecLib and its models are configured correctly.
 """
 from typing import Union, List
 
@@ -15,7 +15,7 @@ logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
 class ConfigurationError(Exception):
     """
-    The exception raised by any AllenNLP object when it's misconfigured
+    The exception raised by any RecLib object when it's misconfigured
     (e.g. missing properties, invalid properties, unknown properties).
     """
 
