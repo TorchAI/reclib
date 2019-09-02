@@ -1,7 +1,7 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import  MultiLayerPerceptron
+from reclib.modules import FeedForward
+from reclib.modules.embedders import Embedding
 
 
 class FactorizationSupportedNeuralNetwork(torch.nn.Module):
@@ -17,7 +17,12 @@ class FactorizationSupportedNeuralNetwork(torch.nn.Module):
         super().__init__()
         self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
-        self.mlp = MultiLayerPerceptron(self.embed_output_dim, mlp_dims, dropout)
+        self.mlp = FeedForward(2,
+                               self.embed_output_dim,
+                               [mlp_dims, 1],
+                               True,
+                               ['relu', 'linear'],
+                               [dropout, 0])
 
     def forward(self, x):
         """

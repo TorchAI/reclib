@@ -1,7 +1,8 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import   CrossNetwork, MultiLayerPerceptron
+from reclib.modules import FeedForward
+from reclib.modules.embedders import Linear_Embedder, Embedding
+from reclib.modules.layers import CrossNetwork
 
 
 class DeepCrossNetwork(torch.nn.Module):
@@ -20,7 +21,12 @@ class DeepCrossNetwork(torch.nn.Module):
         self.embed_output_dim = len(field_dims) * embed_dim
         self.cn = CrossNetwork(self.embed_output_dim, num_layers)
         self.cn_output = torch.nn.Linear(self.embed_output_dim, 1)
-        self.mlp = MultiLayerPerceptron(self.embed_output_dim, mlp_dims, dropout)
+        self.mlp = FeedForward(2,
+                               self.embed_output_dim,
+                               [mlp_dims, 1],
+                               True,
+                               ['relu', 'linear'],
+                               [dropout, 0])
 
     def forward(self, x):
         """

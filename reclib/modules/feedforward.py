@@ -2,16 +2,16 @@
 A feed-forward neural network.
 """
 from typing import List, Union
-from assertpy import assert_that
-import torch
 
-form torch.nn import ModuleList, Linear, Dropout
-#from reclib.common import FromParams
-from reclib.common.checks import ConfigurationError
+import torch
+from assertpy import assert_that
+from torch.nn import ModuleList, Linear, Dropout
+
+# from reclib.common import FromParams
 from reclib.nn import Activation
 
 
-#class FeedForward(torch.nn.Module, FromParams):
+# class FeedForward(torch.nn.Module, FromParams):
 class FeedForward(torch.nn.Module):
     """
     This ``Module`` is a feed-forward neural network, just a sequence of ``Linear`` layers with
@@ -35,12 +35,13 @@ class FeedForward(torch.nn.Module):
         If given, we will apply this amount of dropout after each layer.  Semantics of ``float``
         versus ``List[float]`` is the same as with other parameters.
     """
+
     def __init__(self,
-                 input_dim: int,
                  num_layers: int,
+                 input_dim: int,
                  hidden_dims: Union[int, List[int]],
-                 activations: Union[Activation, List[Activation]],
                  batch_norm: bool,
+                 activations: Union[Activation, List[Activation]],
                  dropout: Union[float, List[float]] = 0.0) -> None:
 
         super(FeedForward, self).__init__()
@@ -75,11 +76,12 @@ class FeedForward(torch.nn.Module):
         for layer_input_dim, layer_output_dim in zip(self.input_dims, self.output_dims):
             layers.append(Linear(layer_input_dim, layer_output_dim))
         if batch_norm is True:
-            self._batch_norm = ModuleList([BatchNorm1d(layer_output_dim) for layer_output_dim in self.output_dims])
+            self._batch_norm = ModuleList(
+                [BatchNorm1d(layer_output_dim) for layer_output_dim in self.output_dims])
         self._layers = ModuleList(layers)
-        self._activations = ModuleList([Activation.by_name(act)() for act in activations])
-        self._dropout = ModuleList([Dropout(p) for p in dropout]) 
-
+        self._activations = ModuleList(
+            [Activation.by_name(act)() for act in activations])
+        self._dropout = ModuleList([Dropout(p) for p in dropout])
 
     def get_output_dim(self):
         return self._output_dim

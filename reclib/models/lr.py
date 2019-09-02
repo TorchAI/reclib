@@ -1,7 +1,6 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import Linear_Embedder
+from reclib.modules.embedders import Linear_Embedder
 
 
 class LogisticRegression(torch.nn.Module):
@@ -13,7 +12,7 @@ class LogisticRegression(torch.nn.Module):
 
     def __init__(self, field_dims):
         super().__init__()
-        self.linear = Linear_Embedder(field_dims)
+        self.linear = Linear_Embedder(field_dims, 1)
 
     def forward(self, x):
         """

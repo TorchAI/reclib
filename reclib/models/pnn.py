@@ -1,8 +1,9 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import   InnerProductNetwork, \
-    OuterProductNetwork, MultiLayerPerceptron
+from reclib.modules import FeedForward
+from reclib.modules.embedders import Linear_Embedder, Embedding
+from reclib.modules.layers import InnerProductNetwork, \
+    OuterProductNetwork
 
 
 class ProductNeuralNetwork(torch.nn.Module):
@@ -13,6 +14,7 @@ class ProductNeuralNetwork(torch.nn.Module):
     Reference:
         Y Qu, et al. Product-based Neural Networks for User Response Prediction, 2016.
     """
+
     def __init__(self,
                  field_dims,
                  embed_dim,
@@ -30,9 +32,14 @@ class ProductNeuralNetwork(torch.nn.Module):
         self.embedding = Embedding(field_dims, embed_dim)
         self.linear = Linear_Embedder(field_dims, embed_dim)
         self.embed_output_dim = num_fields * embed_dim
-        self.mlp = MultiLayerPerceptron(
-            num_fields * (num_fields - 1) // 2 + self.embed_output_dim,
-            mlp_dims, dropout)
+
+        self.mlp = FeedForward(2,
+                               num_fields * (num_fields - 1) // 2 +
+                               self.embed_output_dim,
+                               [mlp_dims, 1],
+                               True,
+                               ['relu', 'linear'],
+                               [dropouts, 0])
 
     def forward(self, x):
         """

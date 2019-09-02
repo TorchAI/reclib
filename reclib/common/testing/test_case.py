@@ -10,6 +10,7 @@ from reclib.common.checks import log_pytorch_version_info
 
 TEST_DIR = tempfile.mkdtemp(prefix="reclib_tests")
 
+
 class RecLibTestCase(TestCase):  # pylint: disable=too-many-public-methods
     """
     A custom subclass of :class:`~unittest.TestCase` that disables some of the

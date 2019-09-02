@@ -1,8 +1,8 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import FieldAwareFactorizationLayer, MultiLayerPerceptron
 from reclib.models import LogisticRegression
+from reclib.modules import FeedForward
+from reclib.modules.layers import FieldAwareFactorizationLayer
 
 
 class FieldAwareNeuralFactorizationMachine(torch.nn.Module):
@@ -23,7 +23,12 @@ class FieldAwareNeuralFactorizationMachine(torch.nn.Module):
             torch.nn.Dropout(dropouts[0])
         )
         self.ffm_output_dim = len(field_dims) * (len(field_dims) - 1) // 2 * embed_dim
-        self.mlp = MultiLayerPerceptron(self.ffm_output_dim, mlp_dims, dropouts[1])
+        self.mlp = FeedForward(2,
+                               self.ffm_output_dim,
+                               [mlp_dims, 1],
+                               True,
+                               ['relu', 'linear'],
+                               [dropouts[1], 0])
 
     def forward(self, x):
         """

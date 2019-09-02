@@ -1,7 +1,7 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import   AttentionalFactorizationLayer
+from reclib.modules.embedders import Linear_Embedder, Embedding
+from reclib.modules.layers import AttentionalFactorizationLayer
 
 
 class AttentionalFactorizationMachine(torch.nn.Module):
@@ -11,6 +11,7 @@ class AttentionalFactorizationMachine(torch.nn.Module):
     Reference:
         J Xiao, et al. Attentional Factorization Machines: Learning the Weight of Feature Interactions via Attention Networks, 2017.
     """
+
     def __init__(self, field_dims, embed_dim, attn_size, dropouts):
         super().__init__()
         self.num_fields = len(field_dims)
