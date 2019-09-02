@@ -1,6 +1,7 @@
 import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import FeaturesEmbedding, FeaturesLinear, CrossNetwork, MultiLayerPerceptron
+from reclib.modules.layers import   CrossNetwork, MultiLayerPerceptron
 
 
 class DeepCrossNetwork(torch.nn.Module):
@@ -14,8 +15,8 @@ class DeepCrossNetwork(torch.nn.Module):
 
     def __init__(self, field_dims, embed_dim, num_layers, mlp_dims, dropout):
         super().__init__()
-        self.embedding = FeaturesEmbedding(field_dims, embed_dim)
-        self.linear = FeaturesLinear(field_dims)
+        self.embedding = Embedding(field_dims, embed_dim)
+        self.linear = Linear_Embedder(field_dims)
         self.embed_output_dim = len(field_dims) * embed_dim
         self.cn = CrossNetwork(self.embed_output_dim, num_layers)
         self.cn_output = torch.nn.Linear(self.embed_output_dim, 1)

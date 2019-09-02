@@ -1,6 +1,7 @@
 import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import FeaturesEmbedding, FeaturesLinear, InnerProductNetwork, \
+from reclib.modules.layers import   InnerProductNetwork, \
     OuterProductNetwork, MultiLayerPerceptron
 
 
@@ -26,8 +27,8 @@ class ProductNeuralNetwork(torch.nn.Module):
             self.pn = OuterProductNetwork(num_fields, embed_dim)
         else:
             raise ValueError('unknown product type: ' + method)
-        self.embedding = FeaturesEmbedding(field_dims, embed_dim)
-        self.linear = FeaturesLinear(field_dims, embed_dim)
+        self.embedding = Embedding(field_dims, embed_dim)
+        self.linear = Linear_Embedder(field_dims, embed_dim)
         self.embed_output_dim = num_fields * embed_dim
         self.mlp = MultiLayerPerceptron(
             num_fields * (num_fields - 1) // 2 + self.embed_output_dim,

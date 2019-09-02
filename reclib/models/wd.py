@@ -1,6 +1,7 @@
 import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import FeaturesLinear, MultiLayerPerceptron, FeaturesEmbedding
+from reclib.modules.layers import  MultiLayerPerceptron, Embedding
 
 
 class WideAndDeep(torch.nn.Module):
@@ -14,8 +15,8 @@ class WideAndDeep(torch.nn.Module):
     """
     def __init__(self, field_dims, embed_dim, mlp_dims, dropout):
         super().__init__()
-        self.linear = FeaturesLinear(field_dims)
-        self.embedding = FeaturesEmbedding(field_dims, embed_dim)
+        self.linear = Linear_Embedder(field_dims)
+        self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
         self.mlp = MultiLayerPerceptron(self.embed_output_dim, mlp_dims,
                                         dropout)

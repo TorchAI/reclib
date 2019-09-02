@@ -1,6 +1,7 @@
 import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import FeaturesEmbedding, FeaturesLinear, AttentionalFactorizationLayer
+from reclib.modules.layers import   AttentionalFactorizationLayer
 
 
 class AttentionalFactorizationMachine(torch.nn.Module):
@@ -13,8 +14,8 @@ class AttentionalFactorizationMachine(torch.nn.Module):
     def __init__(self, field_dims, embed_dim, attn_size, dropouts):
         super().__init__()
         self.num_fields = len(field_dims)
-        self.embedding = FeaturesEmbedding(field_dims, embed_dim)
-        self.linear = FeaturesLinear(field_dims)
+        self.embedding = Embedding(field_dims, embed_dim)
+        self.linear = Linear_Embedder(field_dims)
         self.afm = AttentionalFactorizationLayer(embed_dim, attn_size, dropouts)
 
     def forward(self, x):
