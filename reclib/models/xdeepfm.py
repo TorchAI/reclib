@@ -1,7 +1,7 @@
 from typing import List, Optional
 
 import torch
-
+from reclib.modules import FeedForward
 from reclib.modules.embedders import LinearEmbedder, Embedding
 from reclib.modules.layers import CompressedInteractionNetwork
 
@@ -46,7 +46,7 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
                                [mlp_dims, 1],
                                True,
                                ['relu', 'linear'],
-                               [dropouts, 0])
+                               [dropout, 0])
 
         self.linear = LinearEmbedder(field_dims, 1)
 
