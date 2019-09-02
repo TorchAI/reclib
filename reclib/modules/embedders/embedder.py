@@ -2,6 +2,7 @@ import torch
 
 from reclib.common import Registrable
 
+
 class Embedder(torch.nn.Module, Registrable):
     """
     A ``Embedder`` is a ``Module`` that takes as input a tensor with integer ids that have

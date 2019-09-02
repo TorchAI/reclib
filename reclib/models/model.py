@@ -4,12 +4,8 @@ an reclib model.
 """
 
 import logging
-import os
-from typing import Dict, Union, List, Set
 
-import numpy
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -42,7 +38,6 @@ class Model(torch.nn.Module, Registrable):
 
     def __init__(self) -> None:
         super().__init__()
-
 
     def forward(self, *inputs):
         raise NotImplementedError

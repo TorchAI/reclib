@@ -97,7 +97,7 @@ class AvazuDataset(torch.utils.data.Dataset):
                 np_array = np.zeros(self.NUM_FEATS + 1, dtype=np.uint32)
                 np_array[0] = int(values[1])
                 for i in range(1, self.NUM_FEATS + 1):
-                    np_array[i] = feat_mapper[i].get(values[i+1], defaults[i])
+                    np_array[i] = feat_mapper[i].get(values[i + 1], defaults[i])
                 buffer.append((struct.pack('>I', item_idx), np_array.tobytes()))
                 item_idx += 1
                 if item_idx % buffer_size == 0:

@@ -1,8 +1,8 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
 
-from reclib.modules.layers import FactorizationMachine,  MultiLayerPerceptron
-from reclib.models import LogisticRegression
+from reclib.modules import FeedForward
+from reclib.modules.embedders import Embedding
+from reclib.modules.layers import FactorizationMachine
 
 
 class NeuralFactorizationMachine(torch.nn.Module):
@@ -23,7 +23,12 @@ class NeuralFactorizationMachine(torch.nn.Module):
             torch.nn.BatchNorm1d(embed_dim),
             torch.nn.Dropout(dropouts[0])
         )
-        self.mlp = MultiLayerPerceptron(embed_dim, mlp_dims, dropouts[1])
+        self.mlp = FeedForward(2,
+                               self.embed_dim,
+                               [mlp_dims, 1],
+                               True,
+                               ['relu', 'linear'],
+                               [dropouts[1], 0])
 
     def forward(self, x):
         """

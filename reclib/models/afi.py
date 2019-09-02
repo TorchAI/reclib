@@ -1,17 +1,17 @@
 import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding
-import torch
-from reclib.modules.embedders import Linear_Embedder, Embedding.nn.functional as F
+import torch.nn.functional as F
 
-from reclib.modules.layers import   MultiLayerPerceptron
+from reclib.modules import FeedForward
+from reclib.modules.embedders import Linear_Embedder, Embedding
+
 
 class AutomaticFeatureInteraction(torch.nn.Module):
     """
     A pytorch implementation of AutoInt.
     Parameters
     ----------
-    
-    
+
+
     Reference:
         W Song, et al. AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks, 2018.
     """
@@ -22,7 +22,12 @@ class AutomaticFeatureInteraction(torch.nn.Module):
         self.linear = Linear_Embedder(field_dims)
         self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
-        self.mlp = MultiLayerPerceptron(self.embed_output_dim, mlp_dims, dropouts[1])
+        self.mlp = FeedForward(2,
+                               self.embed_output_dim,
+                               [mlp_dims, 1],
+                               True,
+                               ['relu', 'linear'],
+                               [dropouts[1], 0])
         self.self_attns = torch.nn.ModuleList([
             torch.nn.MultiheadAttention(embed_dim, num_heads, dropout=dropouts[0]) for _ in range(num_layers)
         ])
@@ -37,6 +42,8 @@ class AutomaticFeatureInteraction(torch.nn.Module):
         for self_attn in self.self_attns:
             cross_term, _ = self_attn(cross_term, cross_term, cross_term)
         cross_term = cross_term.transpose(0, 1)
-        cross_term = F.relu(cross_term).contiguous().view(-1, self.embed_output_dim)
-        x = self.linear(x) + self.attn_fc(cross_term) + self.mlp(embed_x.view(-1, self.embed_output_dim))
+        cross_term = F.relu(cross_term).contiguous(
+        ).view(-1, self.embed_output_dim)
+        x = self.linear(x) + self.attn_fc(cross_term) + \
+            self.mlp(embed_x.view(-1, self.embed_output_dim))
         return torch.sigmoid(x.squeeze(1))
