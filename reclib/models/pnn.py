@@ -1,7 +1,7 @@
 import torch
 
 from reclib.modules import FeedForward
-from reclib.modules.embedders import Linear_Embedder, Embedding
+from reclib.modules.embedders import LinearEmbedder, Embedding
 from reclib.modules.layers import InnerProductNetwork, \
     OuterProductNetwork
 
@@ -30,7 +30,7 @@ class ProductNeuralNetwork(torch.nn.Module):
         else:
             raise ValueError('unknown product type: ' + method)
         self.embedding = Embedding(field_dims, embed_dim)
-        self.linear = Linear_Embedder(field_dims, embed_dim)
+        self.linear = LinearEmbedder(field_dims, embed_dim)
         self.embed_output_dim = num_fields * embed_dim
 
         self.mlp = FeedForward(2,

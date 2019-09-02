@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 
 from reclib.modules import FeedForward
-from reclib.modules.embedders import Linear_Embedder, Embedding
+from reclib.modules.embedders import LinearEmbedder, Embedding
 
 
 class AutomaticFeatureInteraction(torch.nn.Module):
@@ -19,7 +19,7 @@ class AutomaticFeatureInteraction(torch.nn.Module):
     def __init__(self, field_dims, embed_dim, num_heads, num_layers, mlp_dims, dropouts):
         super().__init__()
         self.num_fields = len(field_dims)
-        self.linear = Linear_Embedder(field_dims)
+        self.linear = LinearEmbedder(field_dims, 1)
         self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
         self.mlp = FeedForward(2,
