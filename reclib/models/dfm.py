@@ -1,7 +1,7 @@
 import torch
 
 from reclib.modules import FeedForward
-from reclib.modules.embedders import Linear_Embedder, Embedding
+from reclib.modules.embedders import LinearEmbedder, Embedding
 from reclib.modules.layers import FactorizationMachine
 
 
@@ -17,7 +17,7 @@ class DeepFactorizationMachine(torch.nn.Module):
 
     def __init__(self, field_dims, embed_dim, mlp_dims, dropout):
         super().__init__()
-        self.linear = Linear_Embedder(field_dims)
+        self.linear = LinearEmbedder(field_dims, 1)
         self.fm = FactorizationMachine(reduce_sum=True)
         self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim

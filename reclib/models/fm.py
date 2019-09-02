@@ -1,6 +1,6 @@
 import torch
 
-from reclib.modules.embedders import Linear_Embedder, Embedding
+from reclib.modules.embedders import LinearEmbedder, Embedding
 from reclib.modules.layers import FactorizationMachine
 
 
@@ -16,7 +16,7 @@ class FactorizationMachine(torch.nn.Module):
     def __init__(self, field_dims, embed_dim):
         super().__init__()
         self.embedding = Embedding(field_dims, embed_dim)
-        self.linear = Linear_Embedder(field_dims)
+        self.linear = LinearEmbedder(field_dims, 1)
         self.fm = FactorizationMachine(reduce_sum=True)
 
     def forward(self, x):

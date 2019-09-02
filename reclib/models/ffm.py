@@ -1,6 +1,6 @@
 import torch
 
-from reclib.modules.embedders import Linear_Embedder
+from reclib.modules.embedders import LinearEmbedder
 from reclib.modules.layers import FieldAwareFactorizationLayer
 
 
@@ -16,7 +16,7 @@ class FieldAwareFactorizationMachine(torch.nn.Module):
 
     def __init__(self, field_dims, embed_dim):
         super().__init__()
-        self.linear = Linear_Embedder(field_dims)
+        self.linear = LinearEmbedder(field_dims, 1)
         self.ffm = FieldAwareFactorizationLayer(field_dims, embed_dim)
 
     def forward(self, x):

@@ -9,6 +9,7 @@ class Embedding(Embedder):
     """
 
     def __init__(self, field_sizes, embed_dim):
+        super(Embedding, self).__init__()
         self.embedding = torch.nn.Embedding(sum(field_sizes) + 1, embed_dim)
         self.offsets = np.array((0, *np.cumsum(field_sizes)[:-1]), dtype=np.long)
         torch.nn.init.xavier_uniform_(self.embedding.weight.data)
