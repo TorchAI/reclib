@@ -85,6 +85,17 @@ Please refer to the documents
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- | 
 | XDeepFM |   |   |   |   |  |    |   | 0.800158 |   | 
 | AutomaticFeatureInteraction |   |   |   |   |  |    |   |  0.7928 |   | 
+| AttentionalFactorizationMachine |   |   |   |   |  |    |   |  0.77824 |   | 
+| DeepCrossNetwork |   |   |   |   |  |    |   |  0.7928 |   | 
+| DeepFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
+| FieldAwareFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
+| AutomaticFeatureInteraction |   |   |   |   |  |    |   |  0.7928 |   | 
+| FactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
+| FieldAwareNeuralFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
+| FactorizationSupportedNeuralNetwork |   |   |   |   |  |    |   |  0.7928 |   | 
+
+
+
 
 
 

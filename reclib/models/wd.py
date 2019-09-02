@@ -25,7 +25,7 @@ class WideAndDeep(torch.nn.Module):
                                [mlp_dims, 1],
                                True,
                                ['relu', 'linear'],
-                               [dropouts, 0])
+                               [dropout, 0])
 
     def forward(self, x):
         """

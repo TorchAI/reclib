@@ -1,9 +1,8 @@
-
 *.zip
 *.xml
 *.iml
 
 dist/
-reclib.egg-info
+reclib.egg-info/
 tmp/
-__pycache__
+__pycache__/
