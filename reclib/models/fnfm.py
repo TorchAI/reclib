@@ -1,4 +1,5 @@
 import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding
 
 from reclib.modules.layers import FieldAwareFactorizationLayer, MultiLayerPerceptron
 from reclib.models import LogisticRegression

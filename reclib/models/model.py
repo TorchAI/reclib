@@ -9,6 +9,7 @@ from typing import Dict, Union, List, Set
 
 import numpy
 import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 

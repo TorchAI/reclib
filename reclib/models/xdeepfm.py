@@ -1,6 +1,7 @@
 import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding
 from typing import List, Optional
-from reclib.modules.layers import CompressedInteractionNetwork, FeaturesEmbedding, FeaturesLinear, MultiLayerPerceptron
+from reclib.modules.layers import CompressedInteractionNetwork,   MultiLayerPerceptron
 
 
 class ExtremeDeepFactorizationMachine(torch.nn.Module):
@@ -33,13 +34,13 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
                  dropout: Optional[float] = None,
                  split_half: bool = True):
         super().__init__()
-        self.embedding = FeaturesEmbedding(field_dims, embed_dim)
+        self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
         self.cin = CompressedInteractionNetwork(
             len(field_dims), cross_layer_sizes, split_half)
         self.mlp = MultiLayerPerceptron(
             self.embed_output_dim, mlp_dims, dropout)
-        self.linear = FeaturesLinear(field_dims)
+        self.linear = Linear_Embedder(field_dims)
 
     def forward(self, x):
         """

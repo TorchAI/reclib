@@ -1,8 +1,9 @@
 import torch
-import torch.nn.functional as F
+from reclib.modules.embedders import Linear_Embedder, Embedding
+import torch
+from reclib.modules.embedders import Linear_Embedder, Embedding.nn.functional as F
 
-from reclib.modules.layers import FeaturesEmbedding, FeaturesLinear, MultiLayerPerceptron
-
+from reclib.modules.layers import   MultiLayerPerceptron
 
 class AutomaticFeatureInteraction(torch.nn.Module):
     """
@@ -18,8 +19,8 @@ class AutomaticFeatureInteraction(torch.nn.Module):
     def __init__(self, field_dims, embed_dim, num_heads, num_layers, mlp_dims, dropouts):
         super().__init__()
         self.num_fields = len(field_dims)
-        self.linear = FeaturesLinear(field_dims)
-        self.embedding = FeaturesEmbedding(field_dims, embed_dim)
+        self.linear = Linear_Embedder(field_dims)
+        self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
         self.mlp = MultiLayerPerceptron(self.embed_output_dim, mlp_dims, dropouts[1])
         self.self_attns = torch.nn.ModuleList([
