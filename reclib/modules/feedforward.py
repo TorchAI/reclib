@@ -5,7 +5,7 @@ from typing import List, Union
 
 import torch
 from assertpy import assert_that
-from torch.nn import ModuleList, Linear, Dropout
+from torch.nn import ModuleList, Linear, Dropout, BatchNorm1d
 
 # from reclib.common import FromParams
 from reclib.nn import Activation
@@ -70,10 +70,8 @@ class FeedForward(torch.nn.Module):
                                      (len(dropout), num_layers))
         '''
         self.input_dims = [input_dim] + hidden_dims[:-1]
-        self.input_dim = input_dim
-        self.output_dim = hidden_dims[-1]
         layers = []
-        for layer_input_dim, layer_output_dim in zip(self.input_dims, self.output_dims):
+        for layer_input_dim, layer_output_dim in zip(self.input_dims, hidden_dims):
             layers.append(Linear(layer_input_dim, layer_output_dim))
         if batch_norm is True:
             self._batch_norm = ModuleList(
@@ -83,15 +81,18 @@ class FeedForward(torch.nn.Module):
             [Activation.by_name(act)() for act in activations])
         self._dropout = ModuleList([Dropout(p) for p in dropout])
 
+        self._input_dim = input_dim
+        self._output_dim = hidden_dims[-1]
+
     def get_output_dim(self):
         return self._output_dim
 
     def get_input_dim(self):
-        return self.input_dim
+        return self._input_dim
 
     def forward(self, inputs: torch.Tensor) -> torch.Tensor:
         # pylint: disable=arguments-differ
         output = inputs
-        for layer, norm, activatoin, dropout in zip(self._layers, self._batch_norm, self._activations, self._dropout):
+        for layer, norm, activation, dropout in zip(self._layers, self._batch_norm, self._activations, self._dropout):
             output = dropout(activation(norm(output)))
         return output

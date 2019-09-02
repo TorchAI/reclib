@@ -1,6 +1,6 @@
 import torch
 
-from allennlp.common import Registrable
+from reclib.common import Registrable
 
 
 class Activation(Registrable):

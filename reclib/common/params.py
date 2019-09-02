@@ -1,5 +1,5 @@
 """
-The :class:`~allennlp.common.params.Params` class represents a dictionary of
+The :class:`~reclib.common.params.Params` class represents a dictionary of
 parameters (e.g. for configuring a model), with added functionality around
 logging and validation.
 """
@@ -28,8 +28,8 @@ except ImportError:
         logger.warning(f"_jsonnet not loaded, treating snippet as json")
         return expr
 
-from allennlp.common.checks import ConfigurationError
-from allennlp.common.file_utils import cached_path
+from reclib.common.checks import ConfigurationError
+from reclib.common.file_utils import cached_path
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -194,7 +194,7 @@ def _is_dict_free(obj: Any) -> bool:
 class Params(MutableMapping):
     """
     Represents a parameter dictionary with a history, and contains other functionality around
-    parameter passing and validation for AllenNLP.
+    parameter passing and validation for reclib.
 
     There are currently two benefits of a ``Params`` object over a plain dictionary for parameter
     passing:
@@ -206,7 +206,7 @@ class Params(MutableMapping):
        specification of the actual parameters used than is given in a JSON file, because
        those may not specify what default values were used, whereas this will log them.
 
-    The convention for using a ``Params`` object in AllenNLP is that you will consume the parameters
+    The convention for using a ``Params`` object in reclib is that you will consume the parameters
     as you read them, so that there are none left when you've read everything you expect.  This
     lets us easily validate that you didn't pass in any `extra` parameters, just by making sure
     that the parameter dictionary is empty.  You should do this when you're done handling
@@ -477,7 +477,7 @@ class Params(MutableMapping):
             for later substitution. Typically we substitute these using environment
             variables; however, you can also specify them here, in which case they
             take priority over environment variables.
-            e.g. {"HOME_DIR": "/Users/allennlp/home"}
+            e.g. {"HOME_DIR": "/Users/reclib/home"}
         """
         if ext_vars is None:
             ext_vars = {}

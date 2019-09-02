@@ -1,8 +1,8 @@
 """
-One of the design principles of AllenNLP is the use of a modular,
+One of the design principles of reclib is the use of a modular,
 declarative language (JSON) for defining experiments and models.
 
-This is implemented by giving each AllenNLP class a method
+This is implemented by giving each reclib class a method
 
 .. code-block
     @classmethod
@@ -29,7 +29,7 @@ as well. For instance, all of our ``Model`` subclasses require a
 model = Model.from_params(params=params.pop('model'), vocab=vocab)
 ```
 
-As an AllenNLP user, you will probably never need to worry about this.
+As an reclib user, you will probably never need to worry about this.
 However, if you do, note that the extra arguments must be called by keyword.
 Prior to this default implementation it was possible to call them positionally
 but this is no longer the case.
@@ -44,8 +44,8 @@ import inspect
 import logging
 from typing import TypeVar, Type, Dict, Union, Any, cast, List, Tuple, Set
 
-from allennlp.common.checks import ConfigurationError
-from allennlp.common.params import Params
+from reclib.common.checks import ConfigurationError
+from reclib.common.params import Params
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -186,7 +186,7 @@ def construct_arg(cls: Type[T],  # pylint: disable=inconsistent-return-statement
     ``inspect.Parameter`` object directly, so that we can handle ``Union`` types using recursion on
     this method, trying the different annotation types in the union in turn.
     """
-    from allennlp.models.archival import load_archive  # import here to avoid circular imports
+    from reclib.models.archival import load_archive  # import here to avoid circular imports
 
     # We used `param_name` as the method argument to avoid conflicts with 'name' being a key in
     # `extras`, which isn't _that_ unlikely.  Now that we are inside the method, we can switch back
@@ -337,7 +337,7 @@ class FromParams:
         your own method that overrides this one.
         """
         # pylint: disable=protected-access
-        from allennlp.common.registrable import Registrable  # import here to avoid circular imports
+        from reclib.common.registrable import Registrable  # import here to avoid circular imports
 
         logger.info(f"instantiating class {cls} from params {getattr(params, 'params', params)} "
                     f"and extras {set(extras.keys())}")
