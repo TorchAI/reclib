@@ -73,12 +73,12 @@ class FeedForward(torch.nn.Module):
         layers = []
         for layer_input_dim, layer_output_dim in zip(self.input_dims, hidden_dims):
             layers.append(Linear(layer_input_dim, layer_output_dim))
+        self._batch_norm = None
         if batch_norm is True:
             self._batch_norm = ModuleList(
-                [BatchNorm1d(layer_output_dim) for layer_output_dim in self.output_dims])
+                [BatchNorm1d(layer_output_dim) for layer_output_dim in hidden_dims])
         self._layers = ModuleList(layers)
-        self._activations = ModuleList(
-            [Activation.by_name(act)() for act in activations])
+        self._activations = activations
         self._dropout = ModuleList([Dropout(p) for p in dropout])
 
         self._input_dim = input_dim
@@ -93,6 +93,10 @@ class FeedForward(torch.nn.Module):
     def forward(self, inputs: torch.Tensor) -> torch.Tensor:
         # pylint: disable=arguments-differ
         output = inputs
-        for layer, norm, activation, dropout in zip(self._layers, self._batch_norm, self._activations, self._dropout):
-            output = dropout(activation(norm(output)))
+        if not self._batch_norm:
+            for layer, norm, activation, dropout in zip(self._layers, self._batch_norm, self._activations, self._dropout):
+                output = dropout(activation(norm(output)))
+        else:
+            for layer, activation, dropout in zip(self._layers, self._activations, self._dropout):
+                output = dropout(activation(output))
         return output
