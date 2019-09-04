@@ -36,29 +36,29 @@ def get_model(name, field_dims):
     elif name == 'ffm':
         return FieldAwareFactorizationMachine(field_dims, embed_dim=4)
     elif name == 'fnn':
-        return FactorizationSupportedNeuralNetwork(field_dims, embed_dim=16, mlp_dims=(16, 16), dropout=0.2)
+        return FactorizationSupportedNeuralNetwork(field_dims, embed_dim=16, mlp_dims=[16, 16], dropout=0.2)
     elif name == 'wd':
-        return WideAndDeep(field_dims, embed_dim=16, mlp_dims=(16, 16), dropout=0.2)
+        return WideAndDeep(field_dims, embed_dim=16, mlp_dims=[16, 16], dropout=0.2)
     elif name == 'ipnn':
-        return ProductNeuralNetwork(field_dims, embed_dim=16, mlp_dims=(16,), method='inner', dropout=0.2)
+        return ProductNeuralNetwork(field_dims, embed_dim=16, mlp_dims=[16], method='inner', dropout=0.2)
     elif name == 'opnn':
-        return ProductNeuralNetwork(field_dims, embed_dim=16, mlp_dims=(16,), method='outer', dropout=0.2)
+        return ProductNeuralNetwork(field_dims, embed_dim=16, mlp_dims=[16], method='outer', dropout=0.2)
     elif name == 'dcn':
-        return DeepCrossNetwork(field_dims, embed_dim=16, num_layers=3, mlp_dims=(16, 16), dropout=0.2)
+        return DeepCrossNetwork(field_dims, embed_dim=16, num_layers=3, mlp_dims=[16, 16], dropout=0.2)
     elif name == 'nfm':
-        return NeuralFactorizationMachine(field_dims, embed_dim=64, mlp_dims=(64,), dropouts=(0.2, 0.2))
+        return NeuralFactorizationMachine(field_dims, embed_dim=64, mlp_dims=[64], dropouts=(0.2, 0.2))
     elif name == 'fnfm':
-        return FieldAwareNeuralFactorizationMachine(field_dims, embed_dim=4, mlp_dims=(64,), dropouts=(0.2, 0.2))
+        return FieldAwareNeuralFactorizationMachine(field_dims, embed_dim=4, mlp_dims=[64], dropouts=(0.2, 0.2))
     elif name == 'dfm':
-        return DeepFactorizationMachine(field_dims, embed_dim=16, mlp_dims=(16, 16), dropout=0.2)
+        return DeepFactorizationMachine(field_dims, embed_dim=16, mlp_dims=[16, 16], dropout=0.2)
     elif name == 'xdfm':
         return ExtremeDeepFactorizationMachine(
-            field_dims, embed_dim=16, cross_layer_sizes=(16, 16), split_half=False, mlp_dims=(16, 16), dropout=0.2)
+            field_dims, embed_dim=16, cross_layer_sizes=[16, 16], split_half=False, mlp_dims=[16, 16], dropout=0.2)
     elif name == 'afm':
         return AttentionalFactorizationMachine(field_dims, embed_dim=16, attn_size=16, dropouts=(0.2, 0.2))
     elif name == 'afi':
         return AutomaticFeatureInteraction(
-            field_dims, embed_dim=32, num_heads=4, num_layers=2, mlp_dims=(16, 16), dropouts=(0.2, 0.2))
+            field_dims, embed_dim=32, num_heads=4, num_layers=2, mlp_dims=[16, 16], dropouts=(0.2, 0.2))
     else:
         raise ValueError('unknown model name: ' + name)
 

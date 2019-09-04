@@ -98,10 +98,6 @@ Please refer to the documents
 
 
 
-
-### 
-
-
 ## Issues
 Everyone is welcome to file issues with either feature requests, bug reports, or general questions. As a small team with only one person, we may ask for contributions if a prompt fix doesn't fit into our roadmap. We allow users a two week window to follow up on questions, after which we will close issues. They can be re-opened if there is further discussion.
 

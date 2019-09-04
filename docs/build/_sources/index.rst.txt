@@ -16,8 +16,7 @@ following principles:
   models provide a template for contributions.
 * *Take object oriented design* seriously, making it easy to implement correct
   models without the pain.
-* *Experiment friendly.*  Run reproducible experiments from a json
-  specification with comprehensive logging.
+* *Experiment friendly.*  Run reproducible experiments with as little as work possible.
 
 RecLib includes reference implementations of high quality models for CTR, ad ranking and more (see https://github.com/tingkai-zhang/reclib#models).
 
