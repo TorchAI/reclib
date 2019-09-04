@@ -5,7 +5,7 @@ recommonmark
 mock
 autodoc
 overrides
-
+torch>=1.1.0
 
 # if using typehints
 sphinx-autodoc-typehints
