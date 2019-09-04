@@ -17,7 +17,7 @@ import sphinx_rtd_theme
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../'))
+sys.path.insert(0, os.path.abspath('../../reclib'))
 
 
 # -- Project information -----------------------------------------------------
@@ -42,7 +42,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.mathjax',
               'sphinx.ext.autosummary',
               'sphinx.ext.coverage',
-              'numpydoc'
+              'numpydoc',
+              'sphinx.ext.napoleon'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
