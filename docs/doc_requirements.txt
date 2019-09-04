@@ -1,17 +1,15 @@
 numpydoc
-sphinx
-sphinx-autobuild
-sphinx_rtd_theme
+
 recommonmark
 
 mock
 autodoc
+overrides
+
 
 # if using typehints
 sphinx-autodoc-typehints
 
-
-overrides
 
 # Builds our documentation.
 sphinx>=2.1.1
