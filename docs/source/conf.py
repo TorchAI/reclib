@@ -17,7 +17,7 @@ import sphinx_rtd_theme
 
 import os
 import sys
-sys.path.insert(0, os.path.abspath('../../reclib'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 
 # -- Project information -----------------------------------------------------
@@ -43,7 +43,8 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.autosummary',
               'sphinx.ext.coverage',
               'numpydoc',
-              'sphinx.ext.napoleon'
+              'sphinx.ext.napoleon',
+              'sphinx_automodapi.automodapi'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -60,7 +61,7 @@ exclude_patterns = []
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 #
-import sphinx_rtd_theme
+
 html_theme = "sphinx_rtd_theme"
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # Theme options are theme-specific and customize the look and feel of a theme
