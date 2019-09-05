@@ -1,7 +1,6 @@
 *.zip
 *.xml
 *.iml
-docs/build/
 dist/
 reclib.egg-info/
 tmp/
