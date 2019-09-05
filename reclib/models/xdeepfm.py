@@ -52,16 +52,10 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
                                input_dim=self.embed_output_dim,
                                hidden_dims=mlp_dims,
                                batch_norm=True,
-                               activations=Activation.by_name('relu')(),
+                               activations=torch.nn.ReLU(),
                                dropout=dropout)
         # We need to seperate cuz output layer doesn't have batch norm
-        self.output_layer = FeedForward(num_layers=1,
-                                        input_dim=mlp_dims[-1],
-                                        hidden_dims=1,
-                                        batch_norm=False,
-                                        activations=Activation.by_name('linear')(),
-                                        dropout=0)
-
+        self.output_layer = torch.nn.Linear(mlp_dims[-1], 1)
         self.linear = LinearEmbedder(field_dims, 1)
 
     def forward(self, x):
