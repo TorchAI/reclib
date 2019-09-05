@@ -11,6 +11,7 @@ from reclib.data.dataset_readers import MovieLens1MDataset, MovieLens20MDataset
 
 from reclib.models import *
 
+import dill
 
 def get_dataset(name, path):
     if name == 'movielens1M':
@@ -122,7 +123,14 @@ def main(dataset_name,
     if not os.path.exists(save_dir):
         os.makedirs(save_dir)
     torch.save(model, f'{save_dir}/{model_name}.pt')
-
+    '''
+    model = ExtremeDeepFactorizationMachine(dataset.field_dims, embed_dim=16,
+                                                 cross_layer_sizes=[16, 16], split_half=False, mlp_dims=[16, 16],
+                                                 dropout=0.2)
+    model.load_state_dict(torch.load(f'{save_dir}/{model_name}.pt'))
+    auc = test(model, test_data_loader, device)
+    print("loaded auc:", auc)
+    '''
 
 if __name__ == '__main__':
     import argparse
@@ -131,7 +139,7 @@ if __name__ == '__main__':
     parser.add_argument('--dataset_name', default='movielens1M')
     parser.add_argument('--dataset_path', default='data/ml-1m/ratings.dat', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
     parser.add_argument('--model_name', default='xdfm')
-    parser.add_argument('--epoch', type=int, default=15)
+    parser.add_argument('--epoch', type=int, default=1)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--batch_size', type=int, default=2048)
     parser.add_argument('--weight_decay', type=float, default=1e-6)
