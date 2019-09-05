@@ -29,5 +29,5 @@ setup(
         '': ['*.json', 'models/*.pkl', 'models/*.json'],
     },
     include_package_data=True,
-    python_requires='>=3'
+    python_requires='>=3.6'
 )
