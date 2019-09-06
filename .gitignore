@@ -8,3 +8,4 @@ tmp/
 __pycache__/
 reclib/__pycache__
 reclib/models/__pycache__
+*.pyc
