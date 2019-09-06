@@ -60,9 +60,16 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
 
     def forward(self, x):
         """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
+        Parameters
+        ----------
+        x: Long tensor of size ``(batch_size, num_fields)``
+
+        Returns
+        ----------
+
+
         """
         embed_x = self.embedding(x)
-        x = self.linear(x) + self.cin(embed_x) + \
+        tmp = self.linear(x) + self.cin(embed_x) + \
             self.output_layer(self.mlp(embed_x.view(-1, self.embed_output_dim)))
-        return torch.sigmoid(x.squeeze(1))
+        return torch.sigmoid(tmp.squeeze(1))
