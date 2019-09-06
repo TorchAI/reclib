@@ -4,10 +4,11 @@
 [![Build Status](https://dev.azure.com/tingkaizhang/reclib/_apis/build/status/tingkai-zhang.reclib?branchName=master)](https://dev.azure.com/tingkaizhang/reclib/_build/latest?definitionId=1&branchName=master)
 <a style="margin: 0 5px" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/tingkai-zhang/reclib" alt="GitHub license"></a>
 
+a Python library for recommender system, which is hyper-modular, extensively tested and easy to extend.
+Reclib makes it easy to design and evaluate deep learning models for recommender system, along with the infrastructure to easily run them in the cloud or on your laptop.
 
 
-
-A python library that provides many recommendation algorithms and let users train and test on their own datasets.
+The CLI part is under construction for now.
 
 
 ## Package Overview

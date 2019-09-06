@@ -24,3 +24,6 @@ class Embedder(torch.nn.Module, Registrable):
         token.  This is `not` the shape of the returned tensor, but the last element of that shape.
         """
         raise NotImplementedError
+
+    def forward(self):
+        return
