@@ -1,7 +1,7 @@
 import torch
 
+from reclib.modules import AttentionalFactorizationLayer
 from reclib.modules.embedders import LinearEmbedder, Embedding
-from reclib.modules.layers import AttentionalFactorizationLayer
 
 
 class AttentionalFactorizationMachine(torch.nn.Module):

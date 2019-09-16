@@ -1,8 +1,8 @@
 import torch
 
+from reclib.modules import FactorizationMachine
 from reclib.modules import FeedForward
 from reclib.modules.embedders import LinearEmbedder, Embedding
-from reclib.modules.layers import FactorizationMachine
 
 
 class DeepFactorizationMachine(torch.nn.Module):

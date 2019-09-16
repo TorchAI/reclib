@@ -2,7 +2,7 @@ import torch
 
 from reclib.models import LogisticRegression
 from reclib.modules import FeedForward
-from reclib.modules.layers import FieldAwareFactorizationLayer
+from reclib.modules import FieldAwareFactorizationLayer
 
 
 class FieldAwareNeuralFactorizationMachine(torch.nn.Module):

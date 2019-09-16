@@ -1,2 +1,6 @@
+from reclib.modules.attention_factorization_layer import AttentionalFactorizationLayer
+from reclib.modules.cross_network import CrossNetwork
+from reclib.modules.factorization_machine import FactorizationMachine
 from reclib.modules.feedforward import FeedForward
+from reclib.modules.field_aware_factorization_layer import FieldAwareFactorizationLayer
 from reclib.modules.layers import *

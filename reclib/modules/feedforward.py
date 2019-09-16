@@ -7,8 +7,8 @@ import torch
 from assertpy import assert_that
 from torch.nn import ModuleList, Linear, Dropout, BatchNorm1d
 
+
 # from reclib.common import FromParams
-from reclib.nn import Activation
 
 
 # class FeedForward(torch.nn.Module, FromParams):
@@ -97,6 +97,7 @@ class FeedForward(torch.nn.Module):
             for layer, activation, dropout in zip(self._layers, self._activations, self._dropout):
                 output = dropout(activation(layer(output)))
         else:
-            for layer, norm, activation, dropout in zip(self._layers, self._batch_norm, self._activations, self._dropout):
+            for layer, norm, activation, dropout in zip(self._layers, self._batch_norm, self._activations,
+                                                        self._dropout):
                 output = dropout(activation(norm(layer(output))))
         return output
