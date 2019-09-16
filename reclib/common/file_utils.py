@@ -2,21 +2,21 @@
 Utilities for working with the local dataset cache.
 """
 
-import os
+import json
 import logging
+import os
 import shutil
 import tempfile
-import json
-from urllib.parse import urlparse
+from functools import wraps
+from hashlib import sha256
 from pathlib import Path
 from typing import Optional, Tuple, Union, IO, Callable, Set
-from hashlib import sha256
-from functools import wraps
+from urllib.parse import urlparse
 
 import boto3
 import botocore
-from botocore.exceptions import ClientError
 import requests
+from botocore.exceptions import ClientError
 from requests.adapters import HTTPAdapter
 from requests.packages.urllib3.util.retry import Retry  # pylint: disable=import-error
 
@@ -34,7 +34,7 @@ DATASET_CACHE = CACHE_DIRECTORY
 
 # Warn if the user is still using the deprecated cache directory.
 if os.path.exists(DEPRECATED_CACHE_DIRECTORY):
-    logger = logging.getLogger(__name__) # pylint: disable=invalid-name
+    logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
     logger.warning(f"Deprecated cache directory found ({DEPRECATED_CACHE_DIRECTORY}).  "
                    f"Please remove this directory from your system to free up space.")
 
@@ -80,6 +80,7 @@ def filename_to_url(filename: str, cache_dir: str = None) -> Tuple[str, str]:
 
     return url, etag
 
+
 def cached_path(url_or_filename: Union[str, Path], cache_dir: str = None) -> str:
     """
     Given something that might be a URL (or might be a local path),
@@ -108,6 +109,7 @@ def cached_path(url_or_filename: Union[str, Path], cache_dir: str = None) -> str
         # Something unknown
         raise ValueError("unable to parse {} as a URL or as a local path".format(url_or_filename))
 
+
 def is_url_or_existing_file(url_or_filename: Union[str, Path, None]) -> bool:
     """
     Given something that might be a URL (or might be a local path),
@@ -118,6 +120,7 @@ def is_url_or_existing_file(url_or_filename: Union[str, Path, None]) -> bool:
     url_or_filename = os.path.expanduser(str(url_or_filename))
     parsed = urlparse(url_or_filename)
     return parsed.scheme in ('http', 'https', 's3') or os.path.exists(url_or_filename)
+
 
 def split_s3_path(url: str) -> Tuple[str, str]:
     """Split a full s3 path into the bucket name and path."""
@@ -177,6 +180,7 @@ def s3_get(url: str, temp_file: IO) -> None:
     bucket_name, s3_path = split_s3_path(url)
     s3_resource.Bucket(bucket_name).download_fileobj(s3_path, temp_file)
 
+
 def session_with_backoff() -> requests.Session:
     """
     We ran into an issue where http requests to s3 were timing out,
@@ -192,6 +196,7 @@ def session_with_backoff() -> requests.Session:
 
     return session
 
+
 def http_get(url: str, temp_file: IO) -> None:
     with session_with_backoff() as session:
         req = session.get(url, stream=True)
@@ -199,7 +204,7 @@ def http_get(url: str, temp_file: IO) -> None:
         total = int(content_length) if content_length is not None else None
         progress = Tqdm.tqdm(unit="B", total=total)
         for chunk in req.iter_content(chunk_size=1024):
-            if chunk: # filter out keep-alive new chunks
+            if chunk:  # filter out keep-alive new chunks
                 progress.update(len(chunk))
                 temp_file.write(chunk)
         progress.close()

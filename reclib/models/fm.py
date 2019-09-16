@@ -1,7 +1,7 @@
 import torch
 
 from reclib.modules.embedders import LinearEmbedder, Embedding
-from reclib.modules.layers import FactorizationMachine
+from reclib.modules import FactorizationMachine
 
 
 class FactorizationMachine(torch.nn.Module):

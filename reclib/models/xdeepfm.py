@@ -1,20 +1,18 @@
-from typing import List, Optional, Union, List
+from typing import Optional, Union, List
 
 import torch
+
 from reclib.modules import FeedForward
 from reclib.modules.embedders import LinearEmbedder, Embedding
 from reclib.modules.layers import CompressedInteractionNetwork
-from reclib.nn import Activation
 
 
 class ExtremeDeepFactorizationMachine(torch.nn.Module):
     """
-    A pytorch implementation of xDeepFM.
-
     Parameters
     ----------
     field_dims: ``List``
-        List of sizes of each field
+        List of sizes of each field (size here means the number of unique items in a field)
     embed_dim: ``int``
         The embedding dimension
     mlp_dim: ``int``
@@ -37,6 +35,7 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
                  dropout: Optional[Union[float, List[float]]] = 0.0,
                  split_half: bool = True):
         super().__init__()
+        self.linear = LinearEmbedder(field_dims, 1)
         self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
         self.cin = CompressedInteractionNetwork(
@@ -54,22 +53,22 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
                                batch_norm=True,
                                activations=torch.nn.ReLU(),
                                dropout=dropout)
-        # We need to seperate cuz output layer doesn't have batch norm
+        # We need to separate cuz output layer doesn't have batch norm
         self.output_layer = torch.nn.Linear(mlp_dims[-1], 1)
-        self.linear = LinearEmbedder(field_dims, 1)
 
     def forward(self, x):
         """
         Parameters
         ----------
         x: Long tensor of size ``(batch_size, num_fields)``
-
         Returns
         ----------
-
-
+        output: ``(batch_size,)``
         """
+        # ``(batch_size, num_fields, embed_dim)
         embed_x = self.embedding(x)
+        # ``(batch_size, 1)``
         tmp = self.linear(x) + self.cin(embed_x) + \
-            self.output_layer(self.mlp(embed_x.view(-1, self.embed_output_dim)))
-        return torch.sigmoid(tmp.squeeze(1))
+              self.output_layer(self.mlp(embed_x.view(-1, self.embed_output_dim)))
+        output = torch.sigmoid(tmp.squeeze(1))
+        return output
