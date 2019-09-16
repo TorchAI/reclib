@@ -9,21 +9,21 @@ import time
 from typing import Dict, Optional, List, Union, Any, Iterable
 
 import torch
-from allennlp.common import Params
-from allennlp.common.checks import parse_cuda_device
-from allennlp.common.tqdm import Tqdm
-from allennlp.common.util import lazy_groups_of
-from allennlp.data.instance import Instance
-from allennlp.data.iterators.data_iterator import DataIterator, TensorDict
-from allennlp.models.model import Model
-from allennlp.nn import util as nn_util
-from allennlp.training import util as training_util
-from allennlp.training.callbacks.callback import Callback
-from allennlp.training.callbacks.callback_handler import CallbackHandler
-from allennlp.training.callbacks.events import Events
-from allennlp.training.optimizers import Optimizer
-from allennlp.training.trainer_base import TrainerBase
-from allennlp.training.trainer_pieces import TrainerPieces
+from reclib.common import Params
+from reclib.common.checks import parse_cuda_device
+from reclib.common.tqdm import Tqdm
+from reclib.common.util import lazy_groups_of
+from reclib.data.instance import Instance
+from reclib.data.iterators.data_iterator import DataIterator, TensorDict
+from reclib.models.model import Model
+from reclib.nn import util as nn_util
+from reclib.training import util as training_util
+from reclib.training.callbacks.callback import Callback
+from reclib.training.callbacks.callback_handler import CallbackHandler
+from reclib.training.callbacks.events import Events
+from reclib.training.optimizers import Optimizer
+from reclib.training.trainer_base import TrainerBase
+from reclib.training.trainer_pieces import TrainerPieces
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
 
@@ -54,7 +54,7 @@ class CallbackTrainer(TrainerBase):
         Parameters
         ----------
         model : ``Model``, required.
-            An AllenNLP model to be optimized. Pytorch Modules can also be optimized if
+            An reclib model to be optimized. Pytorch Modules can also be optimized if
             their ``forward`` method returns a dictionary with a "loss" key, containing a
             scalar tensor representing the loss function to be optimized.
 

@@ -4,7 +4,7 @@ import torch
 
 from reclib.modules import FeedForward
 from reclib.modules.embedders import LinearEmbedder, Embedding
-from reclib.modules.layers import CompressedInteractionNetwork
+from reclib.modules import CompressedInteractionNetwork
 
 
 class ExtremeDeepFactorizationMachine(torch.nn.Module):

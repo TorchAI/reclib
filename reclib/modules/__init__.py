@@ -3,4 +3,6 @@ from reclib.modules.cross_network import CrossNetwork
 from reclib.modules.factorization_machine import FactorizationMachine
 from reclib.modules.feedforward import FeedForward
 from reclib.modules.field_aware_factorization_layer import FieldAwareFactorizationLayer
-from reclib.modules.layers import *
+from reclib.modules.inner_product_network import InnerProductNetwork
+from reclib.modules.outer_product_network import OuterProductNetwork
+from reclib.modules.compressed_interaction_network import CompressedInteractionNetwork

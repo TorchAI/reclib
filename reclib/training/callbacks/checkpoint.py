@@ -2,16 +2,16 @@ import time
 import traceback
 from typing import List, Optional, TYPE_CHECKING
 
-from allennlp.common.checks import ConfigurationError
-from allennlp.common.params import Params
-from allennlp.training import util as training_util
-from allennlp.training.callbacks.callback import Callback, handle_event
-from allennlp.training.callbacks.events import Events
-from allennlp.training.checkpointer import Checkpointer
-from allennlp.training.moving_average import MovingAverage
+from reclib.common.checks import ConfigurationError
+from reclib.common.params import Params
+from reclib.training import util as training_util
+from reclib.training.callbacks.callback import Callback, handle_event
+from reclib.training.callbacks.events import Events
+from reclib.training.checkpointer import Checkpointer
+from reclib.training.moving_average import MovingAverage
 
 if TYPE_CHECKING:
-    from allennlp.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
+    from reclib.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
 
 
 @Callback.register("checkpoint")

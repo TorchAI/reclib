@@ -1,8 +1,8 @@
 from typing import List, Optional, Union
 
 import torch
-from allennlp.common.checks import ConfigurationError
-from allennlp.training.metrics.metric import Metric
+from reclib.common.checks import ConfigurationError
+from reclib.training.metrics.metric import Metric
 from overrides import overrides
 
 

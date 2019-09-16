@@ -2,8 +2,7 @@ import torch
 
 from reclib.modules import FeedForward
 from reclib.modules.embedders import LinearEmbedder, Embedding
-from reclib.modules.layers import InnerProductNetwork, \
-    OuterProductNetwork
+from reclib.modules import InnerProductNetwork, OuterProductNetwork
 
 
 class ProductNeuralNetwork(torch.nn.Module):

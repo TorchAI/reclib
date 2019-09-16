@@ -1,10 +1,10 @@
 from typing import Dict, Any
 
 import torch
-from allennlp.common.checks import ConfigurationError
-from allennlp.common.params import Params
-from allennlp.common.registrable import Registrable
-from allennlp.training.scheduler import Scheduler
+from reclib.common.checks import ConfigurationError
+from reclib.common.params import Params
+from reclib.common.registrable import Registrable
+from reclib.training.scheduler import Scheduler
 from overrides import overrides
 
 

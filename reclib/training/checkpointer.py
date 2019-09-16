@@ -6,8 +6,8 @@ import time
 from typing import Union, Dict, Any, List, Tuple
 
 import torch
-from allennlp.common.registrable import Registrable
-from allennlp.nn import util as nn_util
+from reclib.common.registrable import Registrable
+from reclib.nn import util as nn_util
 
 logger = logging.getLogger(__name__)
 

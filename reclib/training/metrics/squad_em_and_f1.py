@@ -1,7 +1,7 @@
 from typing import Tuple
 
-from allennlp.tools import squad_eval
-from allennlp.training.metrics.metric import Metric
+from reclib.tools import squad_eval
+from reclib.training.metrics.metric import Metric
 from overrides import overrides
 
 

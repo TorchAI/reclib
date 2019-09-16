@@ -1,5 +1,5 @@
 """
-AllenNLP just uses
+reclib just uses
 `PyTorch optimizers <https://pytorch.org/docs/master/optim.html>`_ ,
 with a thin wrapper to allow registering them and instantiating them ``from_params``.
 
@@ -21,7 +21,7 @@ import re
 from typing import List, Any, Dict
 
 import torch
-from allennlp.common import Params, Registrable
+from reclib.common import Params, Registrable
 from pytorch_pretrained_bert.optimization import BertAdam
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
@@ -58,7 +58,7 @@ class Optimizer(Registrable):
             #       [["regex1", "regex2"], {"lr": 1e-3}],
             #       [["regex3"], {"lr": 1e-4}]
             # ]
-            # (note that the allennlp config files require double quotes ", and will
+            # (note that the reclib config files require double quotes ", and will
             # fail (sometimes silently) with single quotes ').
 
             # This is typed as as Any since the dict values other then
@@ -154,7 +154,7 @@ Registrable._registry[Optimizer] = {  # pylint: disable=protected-access
 def _safe_sparse_mask(tensor: torch.Tensor, mask: torch.Tensor) -> torch.Tensor:
     """
     In PyTorch 1.0, Tensor._sparse_mask was changed to Tensor.sparse_mask.
-    This wrapper allows AllenNLP to (temporarily) work with both 1.0 and 0.4.1.
+    This wrapper allows reclib to (temporarily) work with both 1.0 and 0.4.1.
     """
     # pylint: disable=protected-access
     try:

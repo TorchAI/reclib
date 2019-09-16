@@ -10,16 +10,16 @@ import shutil
 from typing import Any, Union, Dict, Iterable, List, Optional, Tuple
 
 import torch
-from allennlp.common.checks import ConfigurationError, check_for_gpu
-from allennlp.common.params import Params
-from allennlp.common.tqdm import Tqdm
-from allennlp.data import Instance
-from allennlp.data.dataset_readers import DatasetReader
-from allennlp.data.iterators import DataIterator
-from allennlp.data.iterators.data_iterator import TensorDict
-from allennlp.models.archival import CONFIG_NAME
-from allennlp.models.model import Model
-from allennlp.nn import util as nn_util
+from reclib.common.checks import ConfigurationError, check_for_gpu
+from reclib.common.params import Params
+from reclib.common.tqdm import Tqdm
+from reclib.data import Instance
+from reclib.data.dataset_readers import DatasetReader
+from reclib.data.iterators import DataIterator
+from reclib.data.iterators.data_iterator import TensorDict
+from reclib.models.archival import CONFIG_NAME
+from reclib.models.model import Model
+from reclib.nn import util as nn_util
 from torch.nn.parallel import replicate, parallel_apply
 from torch.nn.parallel.scatter_gather import gather
 
@@ -252,7 +252,7 @@ def create_serialization_dir(
     Parameters
     ----------
     params: ``Params``
-        A parameter object specifying an AllenNLP Experiment.
+        A parameter object specifying an reclib Experiment.
     serialization_dir: ``str``
         The directory in which to save results and logs.
     recover: ``bool``
@@ -315,7 +315,7 @@ def data_parallel(batch_group: List[TensorDict],
                   cuda_devices: List) -> Dict[str, torch.Tensor]:
     """
     Performs a forward pass using multiple GPUs.  This is a simplification
-    of torch.nn.parallel.data_parallel to support the allennlp model
+    of torch.nn.parallel.data_parallel to support the reclib model
     interface.
     """
     assert len(batch_group) <= len(cuda_devices)

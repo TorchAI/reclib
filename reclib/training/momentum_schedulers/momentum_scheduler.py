@@ -1,8 +1,8 @@
 import torch
 
-from allennlp.common.params import Params
-from allennlp.common.registrable import Registrable
-from allennlp.training.scheduler import Scheduler
+from reclib.common.params import Params
+from reclib.common.registrable import Registrable
+from reclib.training.scheduler import Scheduler
 
 
 class MomentumScheduler(Scheduler, Registrable):

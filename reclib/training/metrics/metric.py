@@ -1,7 +1,7 @@
 from typing import Dict, Optional, Tuple, Union, List
 
 import torch
-from allennlp.common.registrable import Registrable
+from reclib.common.registrable import Registrable
 
 
 class Metric(Registrable):

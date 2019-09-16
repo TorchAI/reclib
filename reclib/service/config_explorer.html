@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>AllenNLP Configuration Wizard (alpha)</title>
+    <title>reclib Configuration Wizard (alpha)</title>
     <style>
         * {
             font-family: sans-serif;
@@ -190,7 +190,7 @@
 </head>
 
 <body>
-<h2>AllenNLP Configuration Wizard (alpha)</h2>
+<h2>reclib Configuration Wizard (alpha)</h2>
 
 <div id="app"></div>
 
@@ -231,11 +231,11 @@
     // A configItem is optional if it has a default value
     const isOptional = (configItem) => configItem.get('defaultValue') !== undefined
 
-    // Assumption is that "allennlp.*" and "torch.*" are configurable
+    // Assumption is that "reclib.*" and "torch.*" are configurable
     // (at least, if they occur in a config file)
     const isConfigurable = (annotation) => {
         const origin = annotation.get('origin')
-        return origin.startsWith('allennlp.') || origin.startsWith('torch.')
+        return origin.startsWith('reclib.') || origin.startsWith('torch.')
     }
 
     // Sometimes we don't have type annotations

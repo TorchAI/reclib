@@ -1,6 +1,6 @@
 import torch
 
-from allennlp.training.momentum_schedulers.momentum_scheduler import MomentumScheduler
+from reclib.training.momentum_schedulers.momentum_scheduler import MomentumScheduler
 
 
 @MomentumScheduler.register("inverted_triangular")

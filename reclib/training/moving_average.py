@@ -1,7 +1,7 @@
 from typing import Iterable, Tuple, Optional
 
 import torch
-from allennlp.common.registrable import Registrable
+from reclib.common.registrable import Registrable
 
 NamedParameter = Tuple[str, torch.Tensor]  # pylint: disable=invalid-name
 

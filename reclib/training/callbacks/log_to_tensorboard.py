@@ -5,14 +5,14 @@ import logging
 from typing import Set, Dict, TYPE_CHECKING
 
 import torch
-from allennlp.common.params import Params
-from allennlp.training import util as training_util
-from allennlp.training.callbacks.callback import Callback, handle_event
-from allennlp.training.callbacks.events import Events
-from allennlp.training.tensorboard_writer import TensorboardWriter
+from reclib.common.params import Params
+from reclib.training import util as training_util
+from reclib.training.callbacks.callback import Callback, handle_event
+from reclib.training.callbacks.events import Events
+from reclib.training.tensorboard_writer import TensorboardWriter
 
 if TYPE_CHECKING:
-    from allennlp.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
+    from reclib.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
 
 logger = logging.getLogger(__name__)
 
