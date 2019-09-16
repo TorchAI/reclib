@@ -8,7 +8,7 @@ and you want to use the default HTML, you could run this like
 
 ```
 python -m reclib.service.server_simple \
-    --archive-path reclib/tests/fixtures/bidaf/serialization/model.tar.gz \
+    --archive-path reclib/tests/fixtures/xdfm/serialization/model.tar.gz \
     --predictor machine-comprehension \
     --title "Demo of the Machine Comprehension Text Fixture" \
     --field-name question --field-name passage
