@@ -1,6 +1,6 @@
 from typing import Callable
 
-from allennlp.common.registrable import Registrable
+from reclib.common.registrable import Registrable
 
 
 def handle_event(event: str, priority: int = 0):

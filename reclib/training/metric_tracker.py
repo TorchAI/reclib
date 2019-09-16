@@ -1,6 +1,6 @@
 from typing import Optional, Iterable, Dict, Any
 
-from allennlp.common.checks import ConfigurationError
+from reclib.common.checks import ConfigurationError
 
 
 class MetricTracker:

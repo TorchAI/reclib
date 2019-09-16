@@ -1,13 +1,13 @@
 from typing import TYPE_CHECKING
 
 import torch
-from allennlp.common.params import Params
-from allennlp.training.callbacks.callback import Callback, handle_event
-from allennlp.training.callbacks.events import Events
-from allennlp.training.learning_rate_schedulers import LearningRateScheduler
+from reclib.common.params import Params
+from reclib.training.callbacks.callback import Callback, handle_event
+from reclib.training.callbacks.events import Events
+from reclib.training.learning_rate_schedulers import LearningRateScheduler
 
 if TYPE_CHECKING:
-    from allennlp.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
+    from reclib.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
 
 
 @Callback.register("update_learning_rate")

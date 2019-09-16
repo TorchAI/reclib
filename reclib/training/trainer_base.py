@@ -1,9 +1,9 @@
 """
-A :class:`~allennlp.training.trainer.Trainer` is responsible for training a
-:class:`~allennlp.models.model.Model`.
+A :class:`~reclib.training.trainer.Trainer` is responsible for training a
+:class:`~reclib.models.model.Model`.
 
 Typically you might create a configuration file specifying the model and
-training parameters and then use :mod:`~allennlp.commands.train`
+training parameters and then use :mod:`~reclib.commands.train`
 rather than instantiating a ``Trainer`` yourself.
 """
 # pylint: disable=too-many-lines
@@ -11,16 +11,16 @@ rather than instantiating a ``Trainer`` yourself.
 import logging
 from typing import Dict, List, Union, Any
 
-from allennlp.common import Params, Registrable
-from allennlp.common.checks import ConfigurationError, check_for_gpu
-from allennlp.models.model import Model
+from reclib.common import Params, Registrable
+from reclib.common.checks import ConfigurationError, check_for_gpu
+from reclib.models.model import Model
 
 logger = logging.getLogger(__name__)
 
 
 class TrainerBase(Registrable):
     """
-    The base class for an AllenNLP trainer. It can do pretty much
+    The base class for an reclib trainer. It can do pretty much
     anything you want. Your subclass should implement ``train``
     and also probably ``from_params``.
     """
@@ -68,8 +68,8 @@ class TrainerBase(Registrable):
 
         if typ3 == "default":
             # Special logic to keep old from_params behavior.
-            from allennlp.training.trainer import Trainer
-            from allennlp.training.trainer_pieces import TrainerPieces
+            from reclib.training.trainer import Trainer
+            from reclib.training.trainer_pieces import TrainerPieces
 
             pieces = TrainerPieces.from_params(params, serialization_dir, recover, cache_directory,
                                                cache_prefix)  # pylint: disable=no-member

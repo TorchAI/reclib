@@ -3,7 +3,7 @@ This is a tiny webapp for generating configuration stubs for your models.
 It's still experimental.
 
 ```
-python -m allennlp.service.config_explorer
+python -m reclib.service.config_explorer
 ```
 
 will launch the app on `localhost:8123` (you can specify a different port if you like).
@@ -11,7 +11,7 @@ will launch the app on `localhost:8123` (you can specify a different port if you
 It can also incorporate your own classes if you use the `include_package` flag:
 
 ```
-python -m allennlp.service.config_explorer \
+python -m reclib.service.config_explorer \
     --include-package my_library
 ```
 """
@@ -19,9 +19,9 @@ import logging
 # pylint: disable=too-many-return-statements
 from typing import Sequence
 
-from allennlp.common.configuration import configure, choices
-from allennlp.common.util import import_submodules
-from allennlp.service.server_simple import ServerError
+from reclib.common.configuration import configure, choices
+from reclib.common.util import import_submodules
+from reclib.service.server_simple import ServerError
 from flask import Flask, request, Response, jsonify, send_file
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name

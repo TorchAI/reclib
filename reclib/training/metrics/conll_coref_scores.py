@@ -3,7 +3,7 @@ from typing import Any, Dict, List, Tuple
 
 import numpy as np
 import torch
-from allennlp.training.metrics.metric import Metric
+from reclib.training.metrics.metric import Metric
 from overrides import overrides
 from scipy.optimize import linear_sum_assignment
 

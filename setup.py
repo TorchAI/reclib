@@ -14,7 +14,7 @@ setup(
     long_description=README,
     long_description_content_type='text/markdown',
     install_requires=INSTALL_PACKAGES,
-    version='0.1.0',
+    version='0.2.0',
     url='https://github.com/tingkai-zhang/reclib',
     author='Tingkai Zhang',
     author_email='tingkai.zhang@gmail.com',

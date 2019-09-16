@@ -1,14 +1,14 @@
 """
 A `Flask <https://palletsprojects.com/p/flask/>`_ server for serving predictions
-from a single AllenNLP model. It also includes a very, very bare-bones
+from a single reclib model. It also includes a very, very bare-bones
 web front-end for exploring predictions (or you can provide your own).
 
 For example, if you have your own predictor and model in the `my_stuff` package,
 and you want to use the default HTML, you could run this like
 
 ```
-python -m allennlp.service.server_simple \
-    --archive-path allennlp/tests/fixtures/bidaf/serialization/model.tar.gz \
+python -m reclib.service.server_simple \
+    --archive-path reclib/tests/fixtures/bidaf/serialization/model.tar.gz \
     --predictor machine-comprehension \
     --title "Demo of the Machine Comprehension Text Fixture" \
     --field-name question --field-name passage
@@ -22,11 +22,11 @@ import sys
 from string import Template
 from typing import List, Callable
 
-from allennlp.common import JsonDict
-from allennlp.common.checks import check_for_gpu
-from allennlp.common.util import import_submodules
-from allennlp.models.archival import load_archive
-from allennlp.predictors import Predictor
+from reclib.common import JsonDict
+from reclib.common.checks import check_for_gpu
+from reclib.common.util import import_submodules
+from reclib.models.archival import load_archive
+from reclib.predictors import Predictor
 from flask import Flask, request, Response, jsonify, send_file, send_from_directory
 from flask_cors import CORS
 from gevent.pywsgi import WSGIServer
@@ -54,7 +54,7 @@ def make_app(predictor: Predictor,
              field_names: List[str] = None,
              static_dir: str = None,
              sanitizer: Callable[[JsonDict], JsonDict] = None,
-             title: str = "AllenNLP Demo") -> Flask:
+             title: str = "reclib Demo") -> Flask:
     """
     Creates a Flask app that serves up the provided ``Predictor``
     along with a front-end for interacting with it.
@@ -164,7 +164,7 @@ def main(args):
     parser.add_argument('-o', '--overrides', type=str, default="",
                         help='a JSON structure used to override the experiment configuration')
     parser.add_argument('--static-dir', type=str, help='serve index.html from this directory')
-    parser.add_argument('--title', type=str, help='change the default page title', default="AllenNLP Demo")
+    parser.add_argument('--title', type=str, help='change the default page title', default="reclib Demo")
     parser.add_argument('--field-name', type=str, action='append',
                         help='field names to include in the demo')
     parser.add_argument('--port', type=int, default=8000, help='port to serve the demo on')

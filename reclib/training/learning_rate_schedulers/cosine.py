@@ -2,7 +2,7 @@ import logging
 
 import numpy as np
 import torch
-from allennlp.training.learning_rate_schedulers.learning_rate_scheduler import LearningRateScheduler
+from reclib.training.learning_rate_schedulers.learning_rate_scheduler import LearningRateScheduler
 
 logger = logging.getLogger(__name__)
 

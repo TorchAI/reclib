@@ -6,9 +6,9 @@ import tempfile
 from collections import defaultdict
 from typing import Dict, List, Optional, Set
 
-from allennlp.common.checks import ConfigurationError
-from allennlp.models.srl_util import write_conll_formatted_tags_to_file
-from allennlp.training.metrics.metric import Metric
+from reclib.common.checks import ConfigurationError
+from reclib.models.srl_util import write_conll_formatted_tags_to_file
+from reclib.training.metrics.metric import Metric
 from overrides import overrides
 
 logger = logging.getLogger(__name__)  # pylint: disable=invalid-name
@@ -22,7 +22,7 @@ class SrlEvalScorer(Metric):
     """
     This class uses the external srl-eval.pl script for computing the CoNLL SRL metrics.
 
-    AllenNLP contains the srl-eval.pl script, but you will need perl 5.x.
+    reclib contains the srl-eval.pl script, but you will need perl 5.x.
 
     Note that this metric reads and writes from disk quite a bit. In particular, it
     writes and subsequently reads two files per __call__, which is typically invoked
@@ -65,12 +65,12 @@ class SrlEvalScorer(Metric):
             The word tokens for each instance in the batch.
         batch_conll_formatted_predicted_tags : ``List[List[str]]``, required.
             A list of predicted CoNLL-formatted SRL tags (itself a list) to compute score for.
-            Use allennlp.models.semantic_role_labeler.convert_bio_tags_to_conll_format
+            Use reclib.models.semantic_role_labeler.convert_bio_tags_to_conll_format
             to convert from BIO to CoNLL format before passing the tags into the metric,
             if applicable.
         batch_conll_formatted_gold_tags : ``List[List[str]]``, required.
             A list of gold CoNLL-formatted SRL tags (itself a list) to use as a reference.
-            Use allennlp.models.semantic_role_labeler.convert_bio_tags_to_conll_format
+            Use reclib.models.semantic_role_labeler.convert_bio_tags_to_conll_format
             to convert from BIO to CoNLL format before passing the
             tags into the metric, if applicable.
         """

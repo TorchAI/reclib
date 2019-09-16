@@ -3,7 +3,7 @@ from collections import Counter
 from typing import Iterable, Tuple, Dict, Set
 
 import torch
-from allennlp.training.metrics.metric import Metric
+from reclib.training.metrics.metric import Metric
 from overrides import overrides
 
 

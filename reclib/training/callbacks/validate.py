@@ -3,17 +3,17 @@ import math
 from typing import Iterable, List, TYPE_CHECKING
 
 import torch
-from allennlp.common.tqdm import Tqdm
-from allennlp.common.util import lazy_groups_of
-from allennlp.data.instance import Instance
-from allennlp.data.iterators import DataIterator
-from allennlp.training import util as training_util
-from allennlp.training.callbacks.callback import Callback, handle_event
-from allennlp.training.callbacks.events import Events
-from allennlp.training.moving_average import MovingAverage
+from reclib.common.tqdm import Tqdm
+from reclib.common.util import lazy_groups_of
+from reclib.data.instance import Instance
+from reclib.data.iterators import DataIterator
+from reclib.training import util as training_util
+from reclib.training.callbacks.callback import Callback, handle_event
+from reclib.training.callbacks.events import Events
+from reclib.training.moving_average import MovingAverage
 
 if TYPE_CHECKING:
-    from allennlp.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
+    from reclib.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
 
 logger = logging.getLogger(__name__)
 

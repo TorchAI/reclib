@@ -3,8 +3,8 @@ from typing import Optional
 
 import numpy as np
 import torch
-from allennlp.training.metrics.covariance import Covariance
-from allennlp.training.metrics.metric import Metric
+from reclib.training.metrics.covariance import Covariance
+from reclib.training.metrics.metric import Metric
 from overrides import overrides
 
 

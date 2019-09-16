@@ -5,8 +5,8 @@ import subprocess
 import tempfile
 from typing import List
 
-from allennlp.common.checks import ConfigurationError
-from allennlp.training.metrics.metric import Metric
+from reclib.common.checks import ConfigurationError
+from reclib.training.metrics.metric import Metric
 from nltk import Tree
 from overrides import overrides
 
@@ -27,9 +27,9 @@ class EvalbBracketingScorer(Metric):
     you may need to remove an ``include <malloc.h>`` statement in ``evalb.c`` before it
     will compile.
 
-    AllenNLP contains the EVALB software, but you will need to compile it yourself
+    reclib contains the EVALB software, but you will need to compile it yourself
     before using it because the binary it generates is system dependent. To build it,
-    run ``make`` inside the ``allennlp/tools/EVALB`` directory.
+    run ``make`` inside the ``reclib/tools/EVALB`` directory.
 
     Note that this metric reads and writes from disk quite a bit. You probably don't
     want to include it in your training loop; instead, you should calculate this on
@@ -75,7 +75,7 @@ class EvalbBracketingScorer(Metric):
 
             # If EVALB executable still doesn't exist, raise an error.
             if not os.path.exists(self._evalb_program_path):
-                compile_command = (f"python -c 'from allennlp.training.metrics import EvalbBracketingScorer; "
+                compile_command = (f"python -c 'from reclib.training.metrics import EvalbBracketingScorer; "
                                    f"EvalbBracketingScorer.compile_evalb(\"{self._evalb_directory_path}\")'")
                 raise ConfigurationError(f"EVALB still not found at {self._evalb_program_path}. "
                                          "You must compile the EVALB scorer before using it."

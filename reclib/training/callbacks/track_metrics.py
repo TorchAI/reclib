@@ -6,15 +6,15 @@ import os
 import time
 from typing import List, Tuple, TYPE_CHECKING
 
-from allennlp.common.checks import ConfigurationError
-from allennlp.common.util import dump_metrics, gpu_memory_mb, peak_memory_mb
-from allennlp.training import util as training_util
-from allennlp.training.callbacks.callback import Callback, handle_event
-from allennlp.training.callbacks.events import Events
-from allennlp.training.metric_tracker import MetricTracker
+from reclib.common.checks import ConfigurationError
+from reclib.common.util import dump_metrics, gpu_memory_mb, peak_memory_mb
+from reclib.training import util as training_util
+from reclib.training.callbacks.callback import Callback, handle_event
+from reclib.training.callbacks.events import Events
+from reclib.training.metric_tracker import MetricTracker
 
 if TYPE_CHECKING:
-    from allennlp.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
+    from reclib.training.callback_trainer import CallbackTrainer  # pylint:disable=unused-import
 
 logger = logging.getLogger(__name__)
 

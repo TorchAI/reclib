@@ -3,8 +3,8 @@ import logging
 from collections import defaultdict
 from typing import Iterable, Dict, NamedTuple, Callable, List
 
-from allennlp.training.callbacks.callback import Callback
-from allennlp.training.trainer_base import TrainerBase
+from reclib.training.callbacks.callback import Callback
+from reclib.training.trainer_base import TrainerBase
 
 logger = logging.getLogger(__name__)
 

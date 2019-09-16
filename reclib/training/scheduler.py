@@ -10,7 +10,7 @@ class Scheduler:
     A scheduler can be used to update any field in an optimizer's parameter groups,
     not just the learning rate.
 
-    During training using the AllenNLP `Trainer`, this is the API and calling
+    During training using the reclib `Trainer`, this is the API and calling
     sequence for ``step`` and ``step_batch``::
 
        scheduler = ... # creates scheduler, calls self.step(epoch=-1) in __init__

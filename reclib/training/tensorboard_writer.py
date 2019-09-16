@@ -3,8 +3,8 @@ import os
 from typing import Any, Set, Optional, Callable
 
 import torch
-from allennlp.common.from_params import FromParams
-from allennlp.models.model import Model
+from reclib.common.from_params import FromParams
+from reclib.models.model import Model
 from tensorboardX import SummaryWriter
 
 logger = logging.getLogger(__name__)

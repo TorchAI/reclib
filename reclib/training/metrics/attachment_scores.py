@@ -1,7 +1,7 @@
 from typing import Optional, List
 
 import torch
-from allennlp.training.metrics.metric import Metric
+from reclib.training.metrics.metric import Metric
 from overrides import overrides
 
 
