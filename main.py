@@ -136,7 +136,7 @@ if __name__ == '__main__':
     import argparse
 
     parser = argparse.ArgumentParser()
-    parser.add_argument('--dataset_name', default='movielens1M')
+    parser.add_argument('--dataset_name', default='MovieLens1MDataset')
     parser.add_argument('--dataset_path', default='data/ml-1m/ratings.dat', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
     parser.add_argument('--model_name', default='xdfm')
     parser.add_argument('--epoch', type=int, default=2)
