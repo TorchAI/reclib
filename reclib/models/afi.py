@@ -7,13 +7,8 @@ from reclib.modules.embedders import LinearEmbedder, Embedding
 
 class AutomaticFeatureInteraction(torch.nn.Module):
     """
-    A pytorch implementation of AutoInt.
-    Parameters
-    ----------
-
-
-    Reference:
-        W Song, et al. AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks, 2018.
+    This implements AutoInt from `"AutoInt: Automatic Feature Interaction Learning via Self-Attentive Neural Networks"
+    <https://arxiv.org/abs/1810.11921>`_ by W Song, et al. , 2018.
     """
 
     def __init__(self, field_dims, embed_dim, num_heads, num_layers, mlp_dims, dropouts):
@@ -35,7 +30,16 @@ class AutomaticFeatureInteraction(torch.nn.Module):
 
     def forward(self, x):
         """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
+        Parameters
+        ----------
+        x: torch.LongTensor
+            Shape of ``(batch_size, num_fields)``
+
+        Returns
+        -------
+        label_logits:
+            A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
+            probabilities of the entailment label.
         """
         embed_x = self.embedding(x)
         cross_term = embed_x.transpose(0, 1)
@@ -46,4 +50,5 @@ class AutomaticFeatureInteraction(torch.nn.Module):
         ).view(-1, self.embed_output_dim)
         x = self.linear(x) + self.attn_fc(cross_term) + \
             self.mlp(embed_x.view(-1, self.embed_output_dim))
-        return torch.sigmoid(x.squeeze(1))
+        label_logits = torch.sigmoid(x.squeeze(1))
+        return label_logits

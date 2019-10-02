@@ -6,12 +6,8 @@ from reclib.modules.embedders import LinearEmbedder, Embedding
 
 class WideAndDeep(torch.nn.Module):
     """
-    A pytorch implementation of wide and deep learning.
-    Parameters
-    ----------
-
-    Reference:
-        HT Cheng, et al. Wide & Deep Learning for Recommender Systems, 2016.
+    This implements wide and deep learning from `"Wide & Deep Learning for Recommender Systems,"
+    <https://arxiv.org/abs/1606.07792>'_ by HT Cheng, et al.  2016.
     """
 
     def __init__(self, field_dims, embed_dim, mlp_dims, dropout):
@@ -29,8 +25,18 @@ class WideAndDeep(torch.nn.Module):
 
     def forward(self, x):
         """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
+        Parameters
+        ----------
+        x: torch.LongTensor
+            Shape of ``(batch_size, num_fields)``
+
+        Returns
+        -------
+        label_logits:
+            A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
+            probabilities of the entailment label.
         """
         embed_x = self.embedding(x)
         x = self.linear(x) + self.mlp(embed_x.view(-1, self.embed_output_dim))
-        return torch.sigmoid(x.squeeze(1))
+        label_logits = torch.sigmoid(x.squeeze(1))
+        return label_logits

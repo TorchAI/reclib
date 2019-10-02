@@ -1,17 +1,16 @@
 import torch
 
-from reclib.models import LogisticRegression
 from reclib.modules import FeedForward
 from reclib.modules import FieldAwareFactorizationLayer
 from reclib.modules.embedders import LinearEmbedder
 
 class FieldAwareNeuralFactorizationMachine(torch.nn.Module):
     """
-    A pytorch implementation of Field-aware Neural Factorization Machine.
-    Parameters
-    ----------
-    Reference:
-        L Zhang, et al. Field-aware Neural Factorization Machine for Click-Through Rate Prediction, 2019.
+    This class implements Field-aware Neural Factorization Machine.
+    `"Field-aware Neural Factorization Machine for Click-Through Rate Prediction"
+    <https://arxiv.org/abs/1902.09096>`_
+    by L Zhang, et al.,  2019.
+
     """
 
     def __init__(self, field_dims, embed_dim, mlp_dims, dropouts):
@@ -29,12 +28,22 @@ class FieldAwareNeuralFactorizationMachine(torch.nn.Module):
                                activations=['relu', 'linear'],
                                dropouts=[dropouts[1], 0])
 
-    def forward(self, x):
+    def forward(self, x: torch.LongTensor):
         """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
+        Parameters
+        ----------
+        x: torch.LongTensor
+            Shape of ``(batch_size, num_fields)``
+
+        Returns
+        -------
+        label_logits:
+            A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
+            probabilities of the entailment label.
         """
         cross_term = self.ffm(x).view(-1, self.ffm_output_dim)
         cross_term = self.bn(cross_term)
         cross_term = self.dropout(cross_term)
         x = self.linear(x) + self.mlp(cross_term)
-        return torch.sigmoid(x.squeeze(1))
+        label_logits = torch.sigmoid(x.squeeze(1))
+        return label_logits

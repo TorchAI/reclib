@@ -105,12 +105,15 @@ def main(dataset_name,
     dataset = get_dataset(dataset_name, dataset_path)
     train_length = int(len(dataset) * 0.8)
     valid_length = int(len(dataset) * 0.1)
+
     test_length = len(dataset) - train_length - valid_length
     train_dataset, valid_dataset, test_dataset = torch.utils.data.random_split(
         dataset, (train_length, valid_length, test_length))
+
     train_data_loader = DataLoader(train_dataset, batch_size=batch_size, num_workers=8)
     valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, num_workers=8)
     test_data_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=8)
+
     model = get_model(model_name, dataset.field_dims).to(device)
     criterion = torch.nn.BCELoss()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate, weight_decay=weight_decay)
@@ -118,6 +121,7 @@ def main(dataset_name,
         train(model, optimizer, train_data_loader, criterion, device)
         auc = test(model, valid_data_loader, device)
         print('epoch:', epoch_i, 'validation: auc:', auc)
+        
     auc = test(model, test_data_loader, device)
     print('test auc:', auc)
     if not os.path.exists(save_dir):

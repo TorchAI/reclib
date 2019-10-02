@@ -9,6 +9,9 @@ from reclib.modules import CompressedInteractionNetwork
 
 class ExtremeDeepFactorizationMachine(torch.nn.Module):
     """
+    This implements xDeepFM from `"xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems"
+    <https://arxiv.org/abs/1803.05170>`_ by J Lian, et al., 2018.
+
     Parameters
     ----------
     field_dims: ``List``
@@ -20,11 +23,6 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
     cross_layer_sizes: ``int``
     dropout: ``float``, optional (default=``None``)
     split_half: ``bool``
-
-
-    Reference:
-        J Lian, et al. xDeepFM: Combining Explicit and Implicit Feature Interactions for Recommender Systems, 2018.
-
     """
 
     def __init__(self,
@@ -60,15 +58,19 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
         """
         Parameters
         ----------
-        x: Long tensor of size ``(batch_size, num_fields)``
+        x: torch.LongTensor
+            Shape of ``(batch_size, num_fields)``
+
         Returns
-        ----------
-        output: ``(batch_size,)``
+        -------
+        label_logits:
+            A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
+            probabilities of the entailment label.
         """
-        # ``(batch_size, num_fields, embed_dim)
+        # (batch_size, num_fields, embed_dim)
         embed_x = self.embedding(x)
-        # ``(batch_size, 1)``
+        # (batch_size, 1)
         tmp = self.linear(x) + self.cin(embed_x) + \
               self.output_layer(self.mlp(embed_x.view(-1, self.embed_output_dim)))
-        output = torch.sigmoid(tmp.squeeze(1))
-        return output
+        label_logits = torch.sigmoid(tmp.squeeze(1))
+        return label_logits
