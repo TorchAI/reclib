@@ -84,17 +84,18 @@ Please refer to the documents
 
 | Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Auc | Explained Variance | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- | 
-| XDeepFM |   |   |   |   |  |    |   | 0.800158 |   | 
 | AutomaticFeatureInteraction |   |   |   |   |  |    |   |  0.7928 |   | 
 | AttentionalFactorizationMachine |   |   |   |   |  |    |   |  0.77824 |   | 
 | DeepCrossNetwork |   |   |   |   |  |    |   |  0.7928 |   | 
 | DeepFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
 | FieldAwareFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
-| AutomaticFeatureInteraction |   |   |   |   |  |    |   |  0.7928 |   | 
 | FactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
 | FieldAwareNeuralFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
 | FactorizationSupportedNeuralNetwork |   |   |   |   |  |    |   |  0.7928 |   | 
-
+| NeuralFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
+| ProductNeuralNetwork |   |   |   |   |  |    |   |  0.7928 |   | 
+| WideAndDeep |   |   |   |   |  |    |   |  0.7928 |   | 
+| ExtremeDeepFactorizationMachine |   |   |   |   |  |    |   |  0.800158 |   | 
 
 
 
