@@ -26,8 +26,18 @@ class FactorizationSupportedNeuralNetwork(torch.nn.Module):
 
     def forward(self, x):
         """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
+        Parameters
+        ----------
+        x: torch.LongTensor
+            Shape of ``(batch_size, num_fields)``
+
+        Returns
+        -------
+        label_logits:
+            A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
+            probabilities of the entailment label.
         """
         embed_x = self.embedding(x)
         x = self.mlp(embed_x.view(-1, self.embed_output_dim))
-        return torch.sigmoid(x.squeeze(1))
+        label_logits = torch.sigmoid(x.squeeze(1))
+        return label_logits

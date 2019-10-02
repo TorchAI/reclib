@@ -34,9 +34,6 @@ class DeepCrossNetwork(torch.nn.Module):
         self.output_layer = torch.nn.Linear(mlp_dims[-1], 1)
 
     def forward(self, x):
-        """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
-        """
         embed_x = self.embedding(x).view(-1, self.embed_output_dim)
         cross_term = self.cn(embed_x)
         x = self.linear(x) + self.cn_output(cross_term) + self.output_layer(self.mlp(embed_x))

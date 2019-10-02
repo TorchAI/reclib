@@ -20,9 +20,6 @@ class FieldAwareFactorizationMachine(torch.nn.Module):
         self.ffm = FieldAwareFactorizationLayer(field_dims, embed_dim)
 
     def forward(self, x):
-        """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
-        """
         ffm_term = torch.sum(torch.sum(self.ffm(x), dim=1), dim=1, keepdim=True)
         x = self.linear(x) + ffm_term
         return torch.sigmoid(x.squeeze(1))

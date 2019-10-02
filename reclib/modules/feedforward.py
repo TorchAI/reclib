@@ -14,7 +14,7 @@ from torch.nn import ModuleList, Linear, Dropout, BatchNorm1d
 # class FeedForward(torch.nn.Module, FromParams):
 class FeedForward(torch.nn.Module):
     """
-    This ``Module`` is a feed-forward neural network, just a sequence of ``Linear`` layers with
+    This ``Module`` is a feed-forward neural network, a sequence of ``Linear`` layers with
     activation functions in between.
 
     Parameters
@@ -79,7 +79,7 @@ class FeedForward(torch.nn.Module):
                 [BatchNorm1d(layer_output_dim) for layer_output_dim in hidden_dims])
         self._layers = ModuleList(layers)
         self._activations = activations
-        self._dropout = ModuleList([Dropout(p) for p in dropout])
+        self._dropouts = ModuleList([Dropout(p) for p in dropout])
 
         self._input_dim = input_dim
         self._output_dim = hidden_dims[-1]
@@ -94,10 +94,10 @@ class FeedForward(torch.nn.Module):
         # pylint: disable=arguments-differ
         output = inputs
         if self._batch_norm == False:
-            for layer, activation, dropout in zip(self._layers, self._activations, self._dropout):
+            for layer, activation, dropout in zip(self._layers, self._activations, self._dropouts):
                 output = dropout(activation(layer(output)))
         else:
             for layer, norm, activation, dropout in zip(self._layers, self._batch_norm, self._activations,
-                                                        self._dropout):
+                                                        self._dropouts):
                 output = dropout(activation(norm(layer(output))))
         return output

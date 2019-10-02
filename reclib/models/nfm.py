@@ -36,14 +36,17 @@ class NeuralFactorizationMachine(torch.nn.Module):
         """
         Parameters
         ----------
-        x: ``(batch_size, num_fields)``
+        x: torch.LongTensor
+            Shape of ``(batch_size, num_fields)``
 
         Returns
         -------
-        output:
+        label_logits:
+            A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
+            probabilities of the entailment label.
         """
         # ``(batch_size, embed_dim)``
         cross_term = self.fm(self.embedding(x))
         tmp = self.linear(x) + self.output_layer(self.mlp(cross_term))
-        output = torch.sigmoid(tmp.squeeze(1))
-        return output
+        label_logits = torch.sigmoid(tmp.squeeze(1))
+        return label_logits

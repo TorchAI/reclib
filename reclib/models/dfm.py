@@ -29,9 +29,6 @@ class DeepFactorizationMachine(torch.nn.Module):
                                [dropout, 0])
 
     def forward(self, x):
-        """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
-        """
         embed_x = self.embedding(x)
         x = self.linear(x) + self.fm(embed_x) + self.mlp(
             embed_x.view(-1, self.embed_output_dim))

@@ -7,11 +7,9 @@ from reclib.modules import InnerProductNetwork, OuterProductNetwork
 
 class ProductNeuralNetwork(torch.nn.Module):
     """
-    A pytorch implementation of inner/outer Product Neural Network.
-    Parameters
-    ----------    
-    Reference:
-        Y Qu, et al. Product-based Neural Networks for User Response Prediction, 2016.
+    This implements the inner/outer Product Neural Network from
+    `"Product-based Neural Networks for User Response Prediction"
+    <https://arxiv.org/abs/1611.00144>`_ by Y Qu, et al., 2016.
     """
 
     def __init__(self,
@@ -42,11 +40,21 @@ class ProductNeuralNetwork(torch.nn.Module):
 
     def forward(self, x):
         """
-        :param x: Long tensor of size ``(batch_size, num_fields)``
+        Parameters
+        ----------
+        x: torch.LongTensor
+            Shape of ``(batch_size, num_fields)``
+
+        Returns
+        -------
+        label_logits:
+            A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
+            probabilities of the entailment label.
         """
         embed_x = self.embedding(x)
         cross_term = self.pn(embed_x)
         x = torch.cat([embed_x.view(-1, self.embed_output_dim), cross_term],
                       dim=1)
         x = self.mlp(x)
-        return torch.sigmoid(x.squeeze(1))
+        label_logits = torch.sigmoid(x.squeeze(1))
+        return label_logits
