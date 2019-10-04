@@ -25,7 +25,7 @@ setup(
             'assertpy',
             'overrides'
     ],
-    version='0.2.6',
+    version='0.2.7',
     url='https://github.com/p-null/reclib',
     author='p-null',
     author_email='20318562+p-null@users.noreply.github.com',

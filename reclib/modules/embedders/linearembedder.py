@@ -13,5 +13,5 @@ class LinearEmbedder(Embedder):
         self.bias = Parameter(torch.zeros((embed_dim,)))
 
     def forward(self, field_id):
-        offseted_id = field_id + field_id.new_tensor(self.offsets).unsqueeze(0)
-        return self.embedding(offseted_id) + self.bias
+        shifted_id = field_id + field_id.new_tensor(self.offsets).unsqueeze(0)
+        return self.embedding(shifted_id) + self.bias
