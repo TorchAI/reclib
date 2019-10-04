@@ -41,7 +41,7 @@ class FeedForward(torch.nn.Module):
                  input_dim: int,
                  hidden_dims: Union[int, List[int]],
                  batch_norm: bool,
-                 activations,
+                 activations: str,
                  dropout: Union[float, List[float]] = 0.0) -> None:
 
         super(FeedForward, self).__init__()
