@@ -21,7 +21,7 @@ class MovieLens20MDataset(torch.utils.data.Dataset):
         MovieLens raw feature columns(fields), discrete values
     targets:  ``array``
         processed binary targets. 0, 1
-    field_dims: ``List``
+    field_sizes: ``List``
         The max numbers of each column, defining the size of each field
 
     Reference:
@@ -31,9 +31,10 @@ class MovieLens20MDataset(torch.utils.data.Dataset):
     def __init__(self, dataset_path, sep=','):
         data = pd.read_csv(dataset_path, sep=sep,
                            engine='python').to_numpy()[:, :3]
-        self.items = data[:, :2].astype(np.int)
+        # ID starts from 1
+        self.items = data[:, :2].astype(np.int) - 1
         self.targets = self.__preprocess_target(data[:, 2]).astype(np.float32)
-        self.field_dims = np.max(self.items, axis=0)
+        self.field_sizes = np.max(self.items, axis=0) + 1
 
     def __len__(self):
         return self.targets.shape[0]

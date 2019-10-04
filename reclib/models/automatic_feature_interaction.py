@@ -25,7 +25,7 @@ class AutomaticFeatureInteraction(torch.nn.Module):
                                hidden_dims=mlp_dims,
                                batch_norm=True,
                                activations=torch.nn.ReLU(),
-                               dropout=dropouts[1])
+                               dropouts=dropouts[1])
         self.output_linear = torch.nn.Linear(mlp_dims[-1], 1)
         self.attention_linear = torch.nn.Linear(self.embed_output_dim, 1)
 
