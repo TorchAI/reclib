@@ -84,7 +84,7 @@ Please refer to the documents
 
 | Model | MAP | nDCG@k | Precision@k | Recall@k | RMSE | MAE | R<sup>2</sup> | Auc | Explained Variance | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- |--- | 
-| AutomaticFeatureInteraction |   |   |   |   |  |    |   |  0.7928 |   | 
+| AutomaticFeatureInteraction |   |   |   |   |  |    |   |  0.7872 |   | 
 | AttentionalFactorizationMachine |   |   |   |   |  |    |   |  0.77824 |   | 
 | DeepCrossNetwork |   |   |   |   |  |    |   |  0.7928 |   | 
 | DeepFactorizationMachine |   |   |   |   |  |    |   |  0.7928 |   | 
