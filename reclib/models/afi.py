@@ -17,16 +17,17 @@ class AutomaticFeatureInteraction(torch.nn.Module):
         self.linear = LinearEmbedder(field_dims, 1)
         self.embedding = Embedding(field_dims, embed_dim)
         self.embed_output_dim = len(field_dims) * embed_dim
-        self.mlp = FeedForward(2,
-                               self.embed_output_dim,
-                               [mlp_dims, 1],
-                               True,
-                               ['relu', 'linear'],
-                               [dropouts[1], 0])
-        self.self_attns = torch.nn.ModuleList([
+        self.self_attention = torch.nn.ModuleList([
             torch.nn.MultiheadAttention(embed_dim, num_heads, dropout=dropouts[0]) for _ in range(num_layers)
         ])
-        self.attn_fc = torch.nn.Linear(self.embed_output_dim, 1)
+        self.mlp = FeedForward(num_layers=2,
+                               input_dim=self.embed_output_dim,
+                               hidden_dims=mlp_dims,
+                               batch_norm=True,
+                               activations=torch.nn.ReLU(),
+                               dropout=dropouts[1])
+        self.output_linear = torch.nn.Linear(mlp_dims[-1], 1)
+        self.attention_linear = torch.nn.Linear(self.embed_output_dim, 1)
 
     def forward(self, x):
         """
@@ -43,12 +44,12 @@ class AutomaticFeatureInteraction(torch.nn.Module):
         """
         embed_x = self.embedding(x)
         cross_term = embed_x.transpose(0, 1)
-        for self_attn in self.self_attns:
+        for self_attn in self.self_attention:
             cross_term, _ = self_attn(cross_term, cross_term, cross_term)
         cross_term = cross_term.transpose(0, 1)
-        cross_term = F.relu(cross_term).contiguous(
-        ).view(-1, self.embed_output_dim)
-        x = self.linear(x) + self.attn_fc(cross_term) + \
-            self.mlp(embed_x.view(-1, self.embed_output_dim))
+        cross_term = F.relu(cross_term).reshape(-1, self.embed_output_dim)
+        tmp = self.output_linear(self.mlp(embed_x.view(-1, self.embed_output_dim)))
+        x = self.linear(x) + self.attention_linear(cross_term) + tmp
+
         label_logits = torch.sigmoid(x.squeeze(1))
         return label_logits
