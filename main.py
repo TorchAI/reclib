@@ -11,8 +11,6 @@ from reclib.data.dataset_readers import MovieLens1MDataset, MovieLens20MDataset
 
 from reclib.models import *
 
-#import dill
-
 def get_dataset(name, path):
     if name == 'movielens1M':
         return MovieLens1MDataset(path)
@@ -25,11 +23,8 @@ def get_dataset(name, path):
     else:
         raise ValueError('unknown dataset name: ' + name)
 
-
 def get_model(name, field_dims):
-    """
-    Hyperparameters are empirically determined, not opitmized.
-    """
+
     if name == 'lr':
         return LogisticRegression(field_dims)
     elif name == 'fm':
