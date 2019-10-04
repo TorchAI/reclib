@@ -31,6 +31,13 @@ If you need pointers on setting up an appropriate Python environment or would li
 
 Windows is currently not officially supported, although we try to fix issues when they are easily addressed.
 
+
+### Installing from source
+```
+git clone https://github.com/TorchAI/reclib.git
+pip install reclib/
+```
+
 ### Installing via pip
 
 #### Setting up a virtual environment
