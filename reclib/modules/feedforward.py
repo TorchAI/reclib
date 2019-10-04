@@ -31,7 +31,7 @@ class FeedForward(torch.nn.Module):
         The activation function to use after each ``Linear`` layer.  If this is a single function,
         we use it after all ``Linear`` layers.  If it is a ``List[Callable]``,
         ``len(activations)`` must be ``num_layers``.
-    dropout : ``Union[float, List[float]]``, optional
+    dropouts : ``Union[float, List[float]]``, optional
         If given, we will apply this amount of dropout after each layer.  Semantics of ``float``
         versus ``List[float]`` is the same as with other parameters.
     """
@@ -42,7 +42,7 @@ class FeedForward(torch.nn.Module):
                  hidden_dims: Union[int, List[int]],
                  batch_norm: bool,
                  activations: str,
-                 dropout: Union[float, List[float]] = 0.0) -> None:
+                 dropouts: Union[float, List[float]] = 0.0) -> None:
 
         super(FeedForward, self).__init__()
 
@@ -50,13 +50,13 @@ class FeedForward(torch.nn.Module):
             hidden_dims = [hidden_dims] * num_layers  # type: ignore
         if not isinstance(activations, list):
             activations = [activations] * num_layers  # type: ignore
-        if not isinstance(dropout, list):
-            dropout = [dropout] * num_layers  # type: ignore
+        if not isinstance(dropouts, list):
+            dropouts = [dropouts] * num_layers  # type: ignore
 
         # Question here: Is it good to use assert here to throw assertion error?
         assert_that(len(hidden_dims)).is_equal_to(num_layers)
         assert_that(len(activations)).is_equal_to(num_layers)
-        assert_that(len(dropout)).is_equal_to(num_layers)
+        assert_that(len(dropouts)).is_equal_to(num_layers)
 
         '''
         if len(hidden_dims) != num_layers:
@@ -79,7 +79,7 @@ class FeedForward(torch.nn.Module):
                 [BatchNorm1d(layer_output_dim) for layer_output_dim in hidden_dims])
         self._layers = ModuleList(layers)
         self._activations = activations
-        self._dropouts = ModuleList([Dropout(p) for p in dropout])
+        self._dropouts = ModuleList([Dropout(p) for p in dropouts])
 
         self._input_dim = input_dim
         self._output_dim = hidden_dims[-1]

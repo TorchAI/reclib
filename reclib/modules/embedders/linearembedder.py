@@ -8,7 +8,7 @@ from reclib.modules.embedders import Embedder
 class LinearEmbedder(Embedder):
     def __init__(self, field_sizes, embed_dim):
         super(LinearEmbedder, self).__init__()
-        self.embedding = EmbeddingBag(sum(field_sizes) + 1, embed_dim, mode='sum')
+        self.embedding = EmbeddingBag(sum(field_sizes), embed_dim, mode='sum')
         self.offsets = np.array((0, *np.cumsum(field_sizes)[:-1]), dtype=np.long)
         self.bias = Parameter(torch.zeros((embed_dim,)))
 

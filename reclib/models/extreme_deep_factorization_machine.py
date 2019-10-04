@@ -50,7 +50,7 @@ class ExtremeDeepFactorizationMachine(torch.nn.Module):
                                hidden_dims=mlp_dims,
                                batch_norm=True,
                                activations=torch.nn.ReLU(),
-                               dropout=dropout)
+                               dropouts=dropout)
         # We need to separate cuz output layer doesn't have batch norm
         self.output_layer = torch.nn.Linear(mlp_dims[-1], 1)
 
