@@ -25,7 +25,7 @@ setup(
             'assertpy',
             'overrides'
     ],
-    version='0.2.7',
+    version='0.2.8',
     url='https://github.com/tingkai-zhang/reclib',
     author='Tingkai Zhang',
     author_email='tingkai.zhang@outlook.com',
