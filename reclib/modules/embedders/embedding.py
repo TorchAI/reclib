@@ -14,7 +14,7 @@ class Embedding(Embedder):
         ----------
         field_sizes: ``List[int]``
         Sizes of each field. Size here means the number of unique items in that field
-        embed_dim: ``int``
+        embed_dim: int
         """
         super(Embedding, self).__init__()
         self.embedding = torch.nn.Embedding(sum(field_sizes) + 1, embed_dim)
