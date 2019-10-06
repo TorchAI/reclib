@@ -71,7 +71,7 @@ def train(model, optimizer, data_loader, criterion, device, log_interval=1000):
         optimizer.step()
         total_loss += loss.item()
         if (i + 1) % log_interval == 0:
-            print('    - loss:', total_loss / log_interval)
+            print('    - loss:{}'.format(total_loss / log_interval))
             total_loss = 0
 
 
@@ -109,7 +109,7 @@ def main(dataset_name,
     valid_data_loader = DataLoader(valid_dataset, batch_size=batch_size, num_workers=8)
     test_data_loader = DataLoader(test_dataset, batch_size=batch_size, num_workers=8)
 
-    model = get_model(model_name, dataset.field_dims).to(device)
+    model = get_model(model_name, dataset.field_sizes).to(device)
     criterion = torch.nn.BCELoss()
     optimizer = torch.optim.Adam(params=model.parameters(), lr=learning_rate, weight_decay=weight_decay)
     for epoch_i in range(epoch):
@@ -137,7 +137,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset_name', default='movielens1M')
     parser.add_argument('--dataset_path', default='data/ml-1m/ratings.dat', help='criteo/train.txt, avazu/train, or ml-1m/ratings.dat')
-    parser.add_argument('--model_name', default='xdfm')
+    parser.add_argument('--model_name', default='fnfm')
     parser.add_argument('--epoch', type=int, default=2)
     parser.add_argument('--learning_rate', type=float, default=0.001)
     parser.add_argument('--batch_size', type=int, default=2048)
