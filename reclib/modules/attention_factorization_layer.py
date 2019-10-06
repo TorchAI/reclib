@@ -1,14 +1,20 @@
-import torch
-
-
+import  torch
+from reclib.modules import FeedForward
+from torch import nn
 class AttentionalFactorizationLayer(torch.nn.Module):
 
     def __init__(self, embed_dim, attn_size, dropouts):
         super().__init__()
-        self.attention_layer = torch.nn.Linear(embed_dim, attn_size)
-        self.projection_layer = torch.nn.Linear(attn_size, 1)
+        activations = [nn.ReLU(), nn.Softmax(dim=1)]
+        self.attention_layer = FeedForward(2,
+                                       embed_dim,
+                                       [attn_size, 1],
+                                       False,
+                                       activations,
+                                       [0, dropouts[0]])
+
         self.linear_layer = torch.nn.Linear(embed_dim, 1)
-        self.dropouts = dropouts
+        self.dropout = nn.Dropout(p=dropouts[1])
 
     def forward(self, x):
         """
@@ -28,9 +34,7 @@ class AttentionalFactorizationLayer(torch.nn.Module):
                 row.append(i), col.append(j)
         p, q = x[:, row], x[:, col]
         inner_product = p * q
-        attention_scores = torch.nn.ReLU((self.attention_layer(inner_product)))
-        attention_scores = torch.nn.softmax(self.projection_layer(attention_scores), dim=1)
-        attention_scores = torch.nn.dropout(attention_scores, p=self.dropouts[0])
+        attention_scores = self.attention_layer(inner_product)
         attention_output = torch.sum(attention_scores * inner_product, dim=1)
-        attention_output = torch.nn.dropout(attention_output, p=self.dropouts[1])
+        attention_output = self.dropout(attention_output)
         return self.linear_layer(attention_output)
