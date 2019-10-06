@@ -1,5 +1,5 @@
 from reclib.models.automatic_feature_interaction import AutomaticFeatureInteraction
-from reclib.models.afm import AttentionalFactorizationMachine
+from reclib.models.attentional_factorization_machine import AttentionalFactorizationMachine
 from reclib.models.deep_cross_network import DeepCrossNetwork
 from reclib.models.deep_factorization_machine import DeepFactorizationMachine
 from reclib.models.field_aware_factorization_machine import FieldAwareFactorizationMachine
