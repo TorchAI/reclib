@@ -7,12 +7,13 @@ from reclib.modules.embedders import LinearEmbedder, Embedding
 
 class DeepFactorizationMachine(torch.nn.Module):
     """
-    A pytorch implementation of DeepFM.
+    This implements implementation of DeepFM from
+    `"DeepFM: A Factorization-Machine based Neural Network for CTR Prediction"
+    <https://arxiv.org/abs/1703.04247>`_ by H Guo, et al. , 2017.
     Parameters
     ----------
 
-    Reference:
-        H Guo, et al. DeepFM: A Factorization-Machine based Neural Network for CTR Prediction, 2017.
+
     """
 
     def __init__(self, field_dims, embed_dim, mlp_dims, dropout):
