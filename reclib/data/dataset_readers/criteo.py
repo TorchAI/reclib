@@ -30,7 +30,8 @@ class CriteoDataset(torch.utils.data.Dataset):
     min_threshold: 
         infrequent feature threshold.
 
-    Reference:
+    Reference
+    ----------
         https://labs.criteo.com/2014/02/kaggle-display-advertising-challenge-dataset
         https://www.csie.ntu.edu.tw/~r01922136/kaggle-2014-criteo.pdf
     """
