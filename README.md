@@ -1,7 +1,7 @@
 <p align="center"><img width="17%" src="docs/RecLib.png" /></p>
 
+[![Build Status](https://dev.azure.com/Torch-AI/RecLib/_apis/build/status/TorchAI.reclib?branchName=master)](https://dev.azure.com/Torch-AI/RecLib/_build/latest?definitionId=1&branchName=master)
 
-[![Build Status](https://dev.azure.com/tingkaizhang/reclib/_apis/build/status/tingkai-zhang.reclib?branchName=master)](https://dev.azure.com/tingkaizhang/reclib/_build/latest?definitionId=1&branchName=master)
 <a style="margin: 0 5px" href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/github/license/tingkai-zhang/reclib" alt="GitHub license"></a>
 
 a Python library for recommender system, which is hyper-modular, extensively tested and easy to extend.
