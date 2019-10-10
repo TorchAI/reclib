@@ -49,7 +49,7 @@ class ProductNeuralNetwork(torch.nn.Module):
         -------
         label_logits:
             A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
-            probabilities of the entailment label.
+            probabilities of the label.
         """
         embed_x = self.embedding(x)
         cross_term = self.pn(embed_x)

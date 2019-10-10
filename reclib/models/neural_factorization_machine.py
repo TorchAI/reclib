@@ -45,7 +45,7 @@ class NeuralFactorizationMachine(torch.nn.Module):
         -------
         label_logits:
             A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
-            probabilities of the entailment label.
+            probabilities of the label.
         """
         # ``(batch_size, embed_dim)``
         cross_term = self.fm(self.embedding(x))

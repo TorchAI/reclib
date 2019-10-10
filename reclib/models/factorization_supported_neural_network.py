@@ -35,7 +35,7 @@ class FactorizationSupportedNeuralNetwork(torch.nn.Module):
         -------
         label_logits:
             A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
-            probabilities of the entailment label.
+            probabilities of the label.
         """
         embed_x = self.embedding(x)
         x = self.mlp(embed_x.view(-1, self.embed_output_dim))

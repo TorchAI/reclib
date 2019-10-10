@@ -40,7 +40,7 @@ class FieldAwareNeuralFactorizationMachine(torch.nn.Module):
         -------
         label_logits:
             A tensor of shape ``(batch_size, num_labels)`` representing un-normalised log
-            probabilities of the entailment label.
+            probabilities of the label.
         """
         cross_term = self.ffm(x).view(-1, self.ffm_output_dim)
         cross_term = self.dp(self.bn(cross_term))
